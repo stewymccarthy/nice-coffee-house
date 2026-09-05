@@ -668,6 +668,214 @@
     section.deep,.band,.season-photo{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+
+  /* Visitor journey — full-bleed horizontal scroller */
+  .journey-scroller{
+    margin-top:8px;
+    width:100%;
+  }
+  .journey-track{
+    display:flex;
+    align-items:stretch;
+    gap:20px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+    cursor:grab;
+    padding-top:8px;
+    padding-bottom:28px;
+    padding-left:max(36px, calc((100vw - var(--measure)) / 2 + 36px));
+    padding-right:max(48px, calc(100vw - 340px - max(36px, calc((100vw - var(--measure)) / 2 + 36px))));
+    outline:none;
+  }
+  .journey-track::-webkit-scrollbar{display:none;}
+  .journey-track:focus-visible{
+    box-shadow:inset 0 0 0 1px var(--rule);
+  }
+  .journey-track.is-dragging{
+    cursor:grabbing;
+    scroll-behavior:auto;
+    user-select:none;
+  }
+  .journey-card{
+    flex:0 0 340px;
+    width:340px;
+    max-width:340px;
+    scroll-snap-align:start;
+    background:var(--sand-deep);
+    border:1px solid var(--rule-soft);
+    padding:28px 26px 22px;
+    display:flex;
+    flex-direction:column;
+    min-height:100%;
+  }
+  section.pale .journey-card{background:var(--sand-deep);}
+  .journey-num{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.78rem;
+    color:var(--ink-faint);
+    letter-spacing:0.04em;
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .journey-card h3{
+    margin:0 0 1rem;
+    font-size:1.32rem;
+    line-height:1.25;
+  }
+  .journey-think{
+    margin:0 0 1rem;
+    color:var(--ink-soft);
+    font-size:0.98rem;
+    line-height:1.55;
+  }
+  .journey-break{
+    margin:0 0 0;
+    color:var(--ink);
+    font-size:0.95rem;
+    line-height:1.6;
+    flex:1 1 auto;
+  }
+  .journey-do{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows 0.35s ease;
+    margin-top:0;
+  }
+  .journey-card.is-open .journey-do{
+    grid-template-rows:1fr;
+    margin-top:1.15rem;
+  }
+  .journey-do-inner{
+    overflow:hidden;
+    min-height:0;
+  }
+  .journey-do-body{
+    padding-top:1.15rem;
+    border-top:1px solid var(--rule-soft);
+  }
+  .journey-do-label{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.78rem;
+    color:var(--ink-faint);
+    letter-spacing:0.04em;
+    display:block;
+    margin-bottom:0.55rem;
+  }
+  .journey-do-body p{
+    margin:0;
+    font-size:0.95rem;
+    line-height:1.6;
+    color:var(--ink);
+  }
+  .journey-toggle{
+    align-self:flex-start;
+    margin-top:1.25rem;
+    padding:0;
+    border:0;
+    background:none;
+    font-family:inherit;
+    font-size:0.95rem;
+    line-height:1.4;
+    color:var(--terracotta-deep);
+    text-decoration:underline;
+    text-underline-offset:3px;
+    cursor:pointer;
+  }
+  .journey-toggle:hover{color:var(--terracotta);}
+  .journey-controls{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    margin:4px 0 1.75rem;
+  }
+  .journey-progress{
+    flex:1 1 auto;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    min-width:0;
+  }
+  .journey-progress-rail{
+    flex:1 1 auto;
+    height:2px;
+    background:var(--rule-soft);
+    position:relative;
+    min-width:48px;
+  }
+  .journey-progress-fill{
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:0%;
+    background:var(--terracotta);
+    transition:width 0.15s ease;
+  }
+  .journey-counter{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.78rem;
+    font-variant-numeric:tabular-nums;
+    color:var(--ink-faint);
+    letter-spacing:0.04em;
+    white-space:nowrap;
+  }
+  .journey-nav{
+    display:flex;
+    gap:10px;
+    flex-shrink:0;
+  }
+  .journey-btn{
+    width:36px;height:36px;
+    border-radius:50%;
+    border:1px solid var(--rule);
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    transition:opacity 0.2s ease;
+  }
+  .journey-btn svg{width:14px;height:14px;display:block;}
+  .journey-btn:hover:not(:disabled){border-color:var(--clay);color:var(--ink);}
+  .journey-btn:disabled{
+    opacity:0.35;
+    cursor:default;
+  }
+  .journey-close{
+    margin:0;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width:700px){
+    .journey-track{
+      gap:16px;
+      padding-left:22px;
+      padding-right:max(22px, calc(100vw - 82vw - 22px));
+    }
+    .journey-card{
+      flex-basis:82vw;
+      width:82vw;
+      max-width:82vw;
+      padding:24px 20px 18px;
+    }
+    .journey-controls{
+      flex-wrap:wrap;
+      gap:14px;
+    }
+    .journey-progress{order:1;width:100%;flex:1 0 100%;}
+    .journey-nav{order:0;margin-left:auto;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .journey-track{scroll-behavior:auto;}
+    .journey-do{transition:none;}
+    .journey-progress-fill{transition:none;}
+  }
 </style>
 </head>
 <body>
@@ -1057,6 +1265,231 @@
   </div>
 </section>
 
+<section class="pale" id="journey">
+  <div class="wrap">
+    <header class="sec-head">
+      <h2>How a visitor actually experiences it</h2>
+    </header>
+    <p class="lead">A visitor to Nice stays about three nights, which means they can plausibly come back three or four times in a single trip. We are not trying to win them for life. We are trying to become their place for that trip, and almost everything that gets in the way is free to fix.</p>
+  </div>
+
+  <div class="journey-scroller">
+    <div class="journey-track" id="journey-track" tabindex="0" role="region" aria-label="Visitor journey stages">
+      <article class="journey-card">
+        <span class="journey-num">1</span>
+        <h3>The night before</h3>
+        <p class="journey-think">Thinking: I get six meals on this trip and I do not want to waste one.</p>
+        <p class="journey-break">They cannot tell recency from volume. A place with four hundred reviews averaging 4.3 may have been coasting since 2019. Google offers no way to tell, so they default to whichever has the most photographs, usually the most touristed and least good.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>A steady flow of reviews from the last thirty days proves the place is good now, which a high average cannot. Photographs show the room with people in it at eight on a Tuesday rather than a styled flat lay.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+
+      <article class="journey-card">
+        <span class="journey-num">2</span>
+        <h3>The decision</h3>
+        <p class="journey-think">Thinking: They all say the same things. How do I choose?</p>
+        <p class="journey-break">Every café in Nice claims artisanal, fait maison, specialty. The words have stopped carrying information, so visitors discount all of them equally.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>Say things that can be checked. Name the roaster, the origin, who is behind the counter. Open every day, half seven to six, all year, does more work than any adjective because it is falsifiable.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+
+      <article class="journey-card">
+        <span class="journey-num">3</span>
+        <h3>Arrival on the street</h3>
+        <p class="journey-think">Thinking: Is this for me or for them? Am I about to be overcharged?</p>
+        <p class="journey-break">French shopfronts give almost no read. A beloved local institution and a tourist trap can look identical, and Nice has enough of the latter that visitors arrive primed for it.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>Prices go on a board outside, legibly, including the terrace. And what they see through the glass matters: people at the counter being handed coffees they did not have to order answers the question without a word.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+
+      <article class="journey-card">
+        <span class="journey-num">4</span>
+        <h3>The threshold</h3>
+        <p class="journey-think">Thinking: I do not know the rules here.</p>
+        <p class="journey-break">The highest drop-off point in the whole journey. French café convention is unwritten and varies by place. Getting it wrong in front of a full room is a small public humiliation, and people leave rather than risk it. Nobody reports this, because they never became a customer.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>Someone acknowledges them within three seconds. Not seats them, just makes eye contact and says how it works. Sit anywhere, we come to you. Five words that dissolve the entire problem, and the one behaviour in the room worth the most.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+
+      <article class="journey-card">
+        <span class="journey-num">5</span>
+        <h3>The language moment</h3>
+        <p class="journey-think">Thinking: My French is bad and I am about to be an inconvenience.</p>
+        <p class="journey-break">The visitor opens in bad French, the server switches to English, and the visitor reads that switch as a correction. It is meant as helpfulness and lands as judgement.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>Let them finish in French, answer in French, let them choose to switch. If they visibly struggle, switch without commenting on it. Never announce that we speak English, which tells them their attempt failed.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+
+      <article class="journey-card">
+        <span class="journey-num">6</span>
+        <h3>The menu</h3>
+        <p class="journey-think">Thinking: I cannot tell what is good, what it is, or how long it takes.</p>
+        <p class="journey-break">Under that load people order the safest recognisable item, usually the cheapest and least interesting. They have a worse meal and we take less money, both caused by the same failure.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>A short menu halves the load. A time marker against each item, five minutes for coffee, twenty for a plate, forty for the full lunch. One line of English beneath each dish describing rather than translating, in smaller type, so a French reader ignores it and an English reader is rescued by it.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+
+      <article class="journey-card">
+        <span class="journey-num">7</span>
+        <h3>Ordering</h3>
+        <p class="journey-think">Thinking: I would ask what is good, but not in French.</p>
+        <p class="journey-break">They want a recommendation and asking is effortful, so most do not. They order without the thing that would have made the meal memorable.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>Offer before being asked. The thing to have this week is X, delivered unprompted at every table, as a scripted behaviour rather than a personality trait. It raises the ticket and gives them something to tell people about.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+
+      <article class="journey-card">
+        <span class="journey-num">8</span>
+        <h3>The wait</h3>
+        <p class="journey-think">Thinking: I have a museum booking. Is this going to take an hour?</p>
+        <p class="journey-break">Nobody tells them. Uncertainty about duration is why time-pressed visitors take a sandwich instead of sitting down, and why the middle of the day underperforms across tourist areas.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>The menu already answered it, so the anxiety largely does not arise. Anything running late gets acknowledged before the customer notices. Told another five minutes, they stay comfortable. Left to guess, they start calculating.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+
+      <article class="journey-card">
+        <span class="journey-num">9</span>
+        <h3>During</h3>
+        <p class="journey-think">Thinking: This is nice.</p>
+        <p class="journey-break">Nothing goes wrong, which is the problem. A pleasant, competent meal produces no memory and no review. Most places lose the trip here by being merely fine.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>One thing per visit that was not transactional. Recognising them from yesterday. A word about where the coffee comes from. Being told what to do with their afternoon. It does not need to be the same gesture, it needs to be one.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+
+      <article class="journey-card">
+        <span class="journey-num">10</span>
+        <h3>Payment</h3>
+        <p class="journey-think">Thinking: I am finished and now I am waiting.</p>
+        <p class="journey-break">The most complained about moment in French hospitality, landing at the worst point in the journey. The good feeling drains out while they try to catch an eye. It is also the last thing that happens, so it is disproportionately what they remember and write about.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>Bring the bill unprompted once plates are cleared, assuming a visitor is in a hurry until proven otherwise. Offer paying at the counter when it arrives. Neither costs anything, and few places bother, which makes it ownable.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+
+      <article class="journey-card">
+        <span class="journey-num">11</span>
+        <h3>Leaving</h3>
+        <p class="journey-think">Thinking: That was good. Where shall we go tomorrow?</p>
+        <p class="journey-break">Nothing brings them back. They had a good time and will now go elsewhere, because there is no reason not to. The trip is three days and we got one visit.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>We open at half seven if you want coffee before the train. One sentence, said to every departing visitor, is the difference between one transaction and three. The canned coffee sits by the door for the same reason.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+
+      <article class="journey-card">
+        <span class="journey-num">12</span>
+        <h3>The review</h3>
+        <p class="journey-think">Thinking: On the train home, writing while it is still warm.</p>
+        <p class="journey-break">Most places never ask, so only the annoyed and the delighted write anything, and the annoyed write faster.</p>
+        <div class="journey-do">
+          <div class="journey-do-inner">
+            <div class="journey-do-body">
+              <span class="journey-do-label">What we do</span>
+              <p>Ask once, after the second visit rather than the first. Someone who came back has already decided they like it. What they write was determined twelve stages ago: the price was the same outside, they told me how long it would take, the locals were queueing, they brought the bill without being asked.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
+      </article>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="journey-controls">
+      <div class="journey-progress">
+        <div class="journey-progress-rail" aria-hidden="true">
+          <div class="journey-progress-fill" id="journey-progress-fill"></div>
+        </div>
+        <span class="journey-counter" id="journey-counter" aria-live="polite">1 / 12</span>
+      </div>
+      <div class="journey-nav">
+        <button type="button" class="journey-btn" id="journey-prev" aria-label="Previous stage" disabled>
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 2.5 4 7l4.5 4.5"/></svg>
+        </button>
+        <button type="button" class="journey-btn" id="journey-next" aria-label="Next stage">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 2.5 10 7l-4.5 4.5"/></svg>
+        </button>
+      </div>
+    </div>
+    <p class="journey-close">Not one of these needs capital. There is no line for any of it in the build cost. It is training, menu design, a board outside and a handful of sentences we decide to say. Each one is engineered to produce the review that wins the searches, which is why the welcome and the search strategy are the same piece of work approached from opposite ends.</p>
+  </div>
+</section>
+
 <section class="quiet" id="costs">
   <div class="coast-deco coast-deco--tr" aria-hidden="true">
     <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
@@ -1167,7 +1600,7 @@
 
 <script src="nice-i18n.js"></script>
 <script>
-(function(){
+  (function(){
   var links = Array.prototype.slice.call(document.querySelectorAll('nav.rail a'));
   var ids = links.map(function(a){ return a.getAttribute('href').slice(1); });
   var sections = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
@@ -1191,6 +1624,128 @@
 
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
+})();
+</script>
+<script>
+(function(){
+  var track = document.getElementById('journey-track');
+  if(!track) return;
+
+  var cards = Array.prototype.slice.call(track.querySelectorAll('.journey-card'));
+  var fill = document.getElementById('journey-progress-fill');
+  var counter = document.getElementById('journey-counter');
+  var prevBtn = document.getElementById('journey-prev');
+  var nextBtn = document.getElementById('journey-next');
+  var total = cards.length;
+  var dragging = false;
+  var dragMoved = false;
+  var startX = 0;
+  var startScroll = 0;
+
+  function step(){
+    if(!cards.length) return 340;
+    var styles = window.getComputedStyle(track);
+    var gap = parseFloat(styles.columnGap || styles.gap) || 20;
+    return cards[0].getBoundingClientRect().width + gap;
+  }
+
+  function maxScroll(){
+    return Math.max(0, track.scrollWidth - track.clientWidth);
+  }
+
+  function currentIndex(){
+    var s = step();
+    if(s <= 0) return 0;
+    var idx = Math.round(track.scrollLeft / s);
+    if(idx < 0) idx = 0;
+    if(idx > total - 1) idx = total - 1;
+    return idx;
+  }
+
+  function update(){
+    var max = maxScroll();
+    var pct = max > 0 ? (track.scrollLeft / max) * 100 : 0;
+    if(pct < 0) pct = 0;
+    if(pct > 100) pct = 100;
+    if(fill) fill.style.width = pct + '%';
+    var idx = currentIndex();
+    if(counter) counter.textContent = (idx + 1) + ' / ' + total;
+    if(prevBtn) prevBtn.disabled = track.scrollLeft <= 1;
+    if(nextBtn) nextBtn.disabled = track.scrollLeft >= max - 1;
+  }
+
+  function scrollByCards(dir){
+    track.scrollBy({left: dir * step(), behavior: 'smooth'});
+  }
+
+  track.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+
+  track.addEventListener('wheel', function(e){
+    if(Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+    var max = maxScroll();
+    if(max <= 0) return;
+    var atStart = track.scrollLeft <= 0;
+    var atEnd = track.scrollLeft >= max - 1;
+    if((e.deltaY < 0 && atStart) || (e.deltaY > 0 && atEnd)) return;
+    e.preventDefault();
+    track.scrollLeft += e.deltaY;
+  }, {passive:false});
+
+  track.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowRight'){
+      e.preventDefault();
+      scrollByCards(1);
+    } else if(e.key === 'ArrowLeft'){
+      e.preventDefault();
+      scrollByCards(-1);
+    }
+  });
+
+  track.addEventListener('mousedown', function(e){
+    if(e.button !== 0) return;
+    dragging = true;
+    dragMoved = false;
+    startX = e.pageX;
+    startScroll = track.scrollLeft;
+    track.classList.add('is-dragging');
+  });
+
+  window.addEventListener('mousemove', function(e){
+    if(!dragging) return;
+    var dx = e.pageX - startX;
+    if(Math.abs(dx) > 3) dragMoved = true;
+    track.scrollLeft = startScroll - dx;
+  });
+
+  window.addEventListener('mouseup', function(){
+    if(!dragging) return;
+    dragging = false;
+    track.classList.remove('is-dragging');
+  });
+
+  track.addEventListener('click', function(e){
+    if(dragMoved){
+      e.preventDefault();
+      e.stopPropagation();
+      dragMoved = false;
+    }
+  }, true);
+
+  if(prevBtn) prevBtn.addEventListener('click', function(){ scrollByCards(-1); });
+  if(nextBtn) nextBtn.addEventListener('click', function(){ scrollByCards(1); });
+
+  cards.forEach(function(card){
+    var btn = card.querySelector('.journey-toggle');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      var open = card.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? 'Close' : 'What we do';
+    });
+  });
+
+  update();
 })();
 </script>
 
