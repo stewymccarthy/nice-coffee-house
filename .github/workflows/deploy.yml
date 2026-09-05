@@ -4,6 +4,12 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  deployments: write
+  pull-requests: write
+  statuses: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -22,4 +28,4 @@ jobs:
           # --prod via vercel-args or production never updates.
           vercel-args: ${{ github.ref == 'refs/heads/main' && '--prod' || '' }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-comment: true
+          github-comment: false
