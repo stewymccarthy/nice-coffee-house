@@ -876,6 +876,67 @@
     .journey-do{transition:none;}
     .journey-progress-fill{transition:none;}
   }
+
+  /* Summary strip */
+  .summary-wrap{padding-top:56px;padding-bottom:8px;}
+  .summary{
+    list-style:none;
+    margin:0;
+    padding:0;
+    border-top:1px solid var(--rule);
+  }
+  .summary li{
+    margin:0;
+    padding:1.05rem 0;
+    border-bottom:1px solid var(--rule);
+    color:var(--ink);
+    font-size:1.05rem;
+    line-height:1.55;
+  }
+
+  /* Journey teaser link */
+  .journey-teaser{margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid var(--rule);}
+  .journey-teaser p{margin:0 0 1rem;}
+  a.text-link{
+    color:var(--terracotta-deep);
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+  a.text-link:hover{color:var(--terracotta);}
+
+  /* Risk passage heading */
+  .passage.risk{margin-top:48px;}
+  .passage.risk h3{
+    margin:0 0 0.85rem;
+    font-size:1.28rem;
+  }
+  .passage.risk::before{display:none;}
+  .passage.risk{
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:28px 0;
+  }
+
+  /* Journey page back link */
+  .back-link{
+    margin:0 0 1rem;
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+  }
+  .back-link a{color:var(--ink-faint);text-decoration:none;}
+  .back-link a:hover{color:var(--terracotta-deep);}
+  .sec-head h1{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-weight:400;
+    font-size:clamp(1.85rem,3.6vw,2.55rem);
+    line-height:1.18;
+    margin:0;
+    letter-spacing:-0.018em;
+    color:var(--ink);
+    max-width:20ch;
+  }
+
 </style>
 </head>
 <body>
@@ -949,13 +1010,14 @@
 
 <nav class="rail" aria-label="Sections" data-i18n-aria="nav-sections">
   <a href="#opening" aria-current="true"><span data-i18n="nav-opening">Opening</span></a>
-  <a href="#spoken"><span data-i18n="nav-city">The city</span></a>
-  <a href="#room"><span data-i18n="nav-room">The room</span></a>
-  <a href="#economics"><span data-i18n="nav-economics">Economics</span></a>
+  <a href="#decided"><span data-i18n="nav-decided">What Nice decided</span></a>
   <a href="#customers"><span data-i18n="nav-customers">Customers</span></a>
+  <a href="#room"><span data-i18n="nav-room">The kitchen</span></a>
+  <a href="#economics"><span data-i18n="nav-economics">Economics</span></a>
+  <a href="#costs"><span data-i18n="nav-costs">What it costs</span></a>
   <a href="#found"><span data-i18n="nav-found">Being found</span></a>
   <a href="#welcome"><span data-i18n="nav-welcome">The welcome</span></a>
-  <a href="#costs"><span data-i18n="nav-costs">What it costs</span></a>
+  <a href="/journey"><span data-i18n="nav-journey">The journey</span></a>
   <a href="#decision"><span data-i18n="nav-decision">A decision</span></a>
 </nav>
 
@@ -987,7 +1049,18 @@
 
 <main>
 
-<section class="pale" id="spoken">
+
+<div class="wrap summary-wrap" id="summary">
+  <ul class="summary">
+    <li>Coffee is the one category in Nice that nobody owns</li>
+    <li>Twelve million visitors a year, thirty thousand students, a growing office population</li>
+    <li>€927,000 of revenue at 16% EBE, a little above a proven local comparable</li>
+    <li>€180,000 to open, buying a site with a kitchen already installed</li>
+    <li>Worth €540,000 to €1.35 million as a saleable business inside five years</li>
+  </ul>
+</div>
+
+<section class="pale" id="decided">
   <div class="coast-deco coast-deco--br" aria-hidden="true">
     <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
       <path class="blob" d="M198 52c62 8 108 58 98 118-8 52-58 92-118 84-72-10-108-88-72-148 24-40 58-58 92-54z"/>
@@ -1003,111 +1076,37 @@
   <div class="wrap">
     <header class="sec-head">
       <span class="idx">01</span>
-      <h2 data-i18n="s01-h2">What is already spoken for, and what is not</h2>
+      <h2 data-i18n="s01-h2">What Nice has already decided</h2>
     </header>
-    <p class="lead" data-i18n="s01-lead">Nice guards its favourites carefully, and most of the categories worth having already belong to somebody. Understanding which ones are genuinely closed is the first useful thing to know, because it saves a great deal of wasted effort later.</p>
+    <p class="lead" data-i18n="s01-lead">Nice guards its favourites carefully, and most of the categories worth having already belong to somebody. Knowing which ones are genuinely closed is the first useful thing to establish, because it saves a great deal of wasted effort later.</p>
 
-    <p data-i18n="s01-p1">Socca has been settled since before the war. Chez Pipo has been firing it in wood ovens since 1923, Chez Theresa since 1925 in an oven built in 1867, and no newcomer is going to displace either of them. Fenocchio has been scooping ice cream on Place Rossetti since 1966 and now runs to something like a hundred flavours. La Merenda still has no telephone and does not need one. These are family businesses with a century of affection behind them, and they should be left alone.</p>
-
-    <p data-i18n="s01-p2">A second group is more recent but no less occupied. Burgers belong to Bubu and Le Bavastro, brunch to Café Marché and Popote d'Ondine, which regularly has a queue at the door. Natural wine belongs to La Cave Du Cours and La Part des Anges. All of these could theoretically be challenged, but doing so would mean spending years building affection against people who already have it, which is a poor use of the group's time and money.</p>
-
-    <p data-i18n="s01-p3">Coffee sits differently. The city has a handful of respected places, Cafés Indien, HUG, French Coffee Shop and Canopée among them, but no single address that everyone names. One published review of a shop that Google itself labels as specialty describes it as overpriced and unremarkable, and argues that coffee in Nice generally underdelivers for what it costs. That is a complaint sitting in public, in a category people already search for, with nobody answering it.</p>
-
-    <p class="quote" data-i18n="s01-quote">A city this size should have a coffee everyone agrees on, and it does not.</p>
-
-    <figure class="band">
-      <img class="grade" src="images/coffee.jpg" alt="" width="1200" height="800" loading="lazy">
-    </figure>
-  </div>
-</section>
-
-<section class="quiet" id="room">
-  <div class="coast-deco coast-deco--tl" aria-hidden="true">
-    <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-      <path class="blob" d="M48 118c34-48 98-58 142-22 38 32 32 92-12 118-48 28-108 12-138-38-18-28-14-42 8-58z"/>
-      <path class="flow flow--light" d="M18 198c58-28 108 12 158-22 38-26 72-8 98 18"/>
-      <path class="sprig" d="M88 248v-92M88 228c18 12 32 4 42-12M88 198c22-6 38-22 48-38M88 168c16-18 28-34 36-52"/>
-      <use href="#coast-palm" transform="translate(198 6) rotate(24) scale(0.88)"/>
-      <use href="#coast-palm-curve" transform="translate(6 198) rotate(-142) scale(0.78)"/>
-    </svg>
-  </div>
-  <div class="wrap">
-    <header class="sec-head">
-      <span class="idx">02</span>
-      <h2 data-i18n="s02-h2">One room, changing shape as the day goes on</h2>
-    </header>
-    <p class="lead" data-i18n="s02-lead">The idea is not a café with food added as an afterthought, nor a restaurant that happens to serve coffee in the morning. It is a single kitchen working to one standard, doing more or less elaborate things depending on the hour and the month.</p>
-
-    <p data-i18n="s02-p1">The higher spend comes from the quality of what goes into the food, never from putting on a different sort of service in the evening. The same chefs, the same suppliers and the same sensibility carry from the first coffee to the last plate, so that somebody who eats lunch there on a Tuesday in February recognises the kitchen when they come back for dinner in July.</p>
-
-    <div class="seasons">
-      <div class="season">
-        <div class="season-photo">
-          <img class="grade" src="images/terrace.jpg" alt="" width="900" height="600" loading="lazy">
-        </div>
-        <div class="season-body">
-          <div class="when"><svg class="mark-ico"><use href="#i-sun"/></svg><span data-i18n="s02-when-summer">June to September, 120 days</span></div>
-          <h3 data-i18n="s02-summer-h3">The full house</h3>
-          <p data-i18n="s02-summer-p">Coffee and pastry from early. Lunch with the terrace at capacity. Aperitivo running into dinner, with the full brigade and a second service. This is where most of the year's revenue is made, and the room is built to take it.</p>
-        </div>
-      </div>
-      <div class="season">
-        <div class="season-photo">
-          <img class="grade" src="images/cafe.jpg" alt="" width="900" height="600" loading="lazy">
-        </div>
-        <div class="season-body">
-          <div class="when"><svg class="mark-ico"><use href="#i-moon"/></svg><span data-i18n="s02-when-winter">October to May, 210 days</span></div>
-          <h3 data-i18n="s02-winter-h3">The core rhythm</h3>
-          <p data-i18n="s02-winter-p">Coffee and pastry from early, lunch service, and the door closes after it. A core team, no evening cover, and a business that runs on residents, students and people who work nearby rather than on visitors.</p>
-        </div>
-      </div>
+    <div class="tiers">
+    <div class="tier">
+      <div class="cap" data-i18n="s05-cap1">Closed for good</div>
+      <div class="qline"><span class="ask" data-i18n="s05-q1a">Best socca in Nice</span><span class="who" data-i18n="s05-q1w">Chez Pipo since 1923, Chez Theresa since 1925</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q2a">Best ice cream in Nice</span><span class="who" data-i18n="s05-q2w">Fenocchio, Place Rossetti, since 1966</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q3a">Best Niçoise cooking</span><span class="who" data-i18n="s05-q3w">La Merenda, Le Safari</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q4a">Best seafood brasserie</span><span class="who" data-i18n="s05-q4w">Café du Turin</span></div>
     </div>
 
-    <div class="passage">
-      <p data-i18n="s02-passage">Flexing the day by season rather than trading the same hours all year is what makes the economics work. An evening brigade only goes on the payroll in the months when there are people to feed, and the weekday lunch trade carries the quieter part of the year on its own. The result is roughly €927,000 of revenue at around 16% EBE, which is better than either a lunch-only operation running all year or a full dinner operation doing the same.</p>
+    <div class="tier">
+      <div class="cap" data-i18n="s05-cap2">Modern, and already taken</div>
+      <div class="qline"><span class="ask" data-i18n="s05-q5a">Best burger in Nice</span><span class="who" data-i18n="s05-q5w">Bubu, Le Bavastro</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q6a">Best brunch in Nice</span><span class="who" data-i18n="s05-q6w">Café Marché, Popote d'Ondine</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q7a">Best natural wine bar</span><span class="who" data-i18n="s05-q7w">La Cave Du Cours, La Part des Anges</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q8a">Best pizza in Nice</span><span class="who" data-i18n="s05-q8w">Pizza Pili, Le Safari</span></div>
     </div>
-  </div>
-</section>
 
-<section class="linen" id="economics">
-  <div class="coast-deco coast-deco--tr" aria-hidden="true">
-    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-      <path class="flow" d="M24 228c48-58 108-38 158-88 32-34 72-28 108-8"/>
-      <path class="flow flow--light" d="M44 258c62-42 108-12 148-52"/>
-      <path class="sprig" d="M228 42v78M228 62c-16-12-32-4-42 10M228 82c-20 2-34 16-44 30"/>
-      <use href="#coast-palm" transform="translate(188 8) rotate(14) scale(0.85)"/>
-      <use href="#coast-palm-curve" transform="translate(12 188) rotate(-118) scale(0.72)"/>
-    </svg>
-  </div>
-  <div class="wrap">
-    <header class="sec-head">
-      <span class="idx">03</span>
-      <h2 data-i18n="s03-h2">The economics, measured against real Nice accounts</h2>
-    </header>
-    <p class="lead" data-i18n="s03-lead">The model assumes 120 peak days at around 220 transactions on a blended ticket of €22, and 210 quieter days at 110 transactions on €15. It is drawn for a room of roughly 100 to 120 square metres, with about 40 covers inside and 20 on the terrace.</p>
-
-    <div class="scroll">
-      <table>
-        <tr><th data-i18n="s03-th-line">Line</th><th class="fig" data-i18n="s03-th-share">Share</th><th class="fig" data-i18n="s03-th-euro">Euro</th></tr>
-        <tr><td data-i18n="s03-r1">Revenue, peak season</td><td class="fig">63%</td><td class="fig">580,800</td></tr>
-        <tr><td data-i18n="s03-r2">Revenue, off-peak</td><td class="fig">37%</td><td class="fig">346,500</td></tr>
-        <tr><td data-i18n="s03-r3">Food and beverage</td><td class="fig">28%</td><td class="fig">(260,000)</td></tr>
-        <tr><td data-i18n="s03-r4">Payroll, fully loaded</td><td class="fig">40%</td><td class="fig">(371,000)</td></tr>
-        <tr><td data-i18n="s03-r5">Rent</td><td class="fig">4.2%</td><td class="fig">(38,500)</td></tr>
-        <tr><td data-i18n="s03-r6">Other charges</td><td class="fig">12%</td><td class="fig">(111,000)</td></tr>
-        <tr class="sum"><td>EBE</td><td class="fig">16%</td><td class="fig">146,800</td></tr>
-      </table>
+    <div class="tier is-open">
+      <div class="cap" data-i18n="s05-cap3">Genuinely open</div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q9a">Best coffee in Nice</span><span class="who" data-i18n="s05-q9w">No settled answer</span></div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q10a">Best breakfast in Nice</span><span class="who" data-i18n="s05-q10w">Every guide disagrees</span></div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q11a">Best place to work in Nice</span><span class="who" data-i18n="s05-q11w">Barely written about</span></div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q12a">Best iced coffee in Nice</span><span class="who" data-i18n="s05-q12w">Nobody has claimed it</span></div>
     </div>
-    <p class="fnote" data-i18n="s03-fnote">A trading restaurant of 120 covers in the Carré d'Or currently runs at 15% EBE on around €830,000 of revenue, so the model sits a little above a proven local comparable rather than far beyond one.</p>
-
-    <h3 data-i18n="s03-h3-rent">The rent test</h3>
-    <p data-i18n="s03-p-rent">Daniel's rule is that a single good trading day ought to cover a month's rent, and it is a sound piece of discipline because it quietly enforces a rent burden of around five per cent of revenue. On a site at €2,019 a month, one peak day at a €22 ticket needs 92 transactions to clear it, which a busy terrace does before the middle of the afternoon. Across a whole season the site covers its annual rent many times over.</p>
-
-    <div class="numbers">
-      <div class="num-item"><span class="v">28%</span><span class="k" data-i18n="s03-n1">Food and beverage cost, in line with the sector</span></div>
-      <div class="num-item"><span class="v">40%</span><span class="k" data-i18n="s03-n2">Payroll, inside the healthy band of 35 to 45%</span></div>
-      <div class="num-item"><span class="v">4.2%</span><span class="k" data-i18n="s03-n3">Rent burden, comfortably under the usual 8 to 10%</span></div>
     </div>
+
+    <p data-i18n="s01-close">Coffee sits differently. The city has respected places, Cafés Indien, HUG, French Coffee Shop and Canopée among them, but no single address that everyone names. One published review of a shop that Google itself labels as specialty calls it overpriced and unremarkable, and argues that coffee in Nice generally underdelivers for what it costs. That is a complaint sitting in public, in a category people already search for, with nobody answering it.</p>
   </div>
 </section>
 
@@ -1123,7 +1122,7 @@
   </div>
   <div class="wrap">
     <header class="sec-head">
-      <span class="idx">04</span>
+      <span class="idx">02</span>
       <h2 data-i18n="s04-h2">Where the customers come from</h2>
     </header>
     <p class="lead" data-i18n="s04-lead">The strongest sites in Nice draw on more than one kind of customer, which is what allows them to trade in February as well as August. Visitors carry the summer, offices and the university carry the weekdays, and the people who live nearby build the habit that holds the rest of it together.</p>
@@ -1157,336 +1156,93 @@
   </div>
 </section>
 
-<section class="deep" id="found">
-  <div class="coast-deco coast-deco--tr" aria-hidden="true">
+<section class="quiet" id="room">
+  <div class="coast-deco coast-deco--tl" aria-hidden="true">
     <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-      <path class="blob" d="M188 38c58 12 98 62 82 118-14 48-62 82-112 68-58-16-88-78-58-128 18-30 52-52 88-58z"/>
-      <path class="flow flow--light" d="M32 248c58-48 108-18 158-58 42-34 88-22 122 2"/>
-      <path class="sprig" d="M248 68v82M248 88c-18-10-34 2-44 16M248 108c-22 4-36 20-48 34"/>
-      <use href="#coast-palm" transform="translate(208 6) rotate(20) scale(0.94)"/>
-      <use href="#coast-palm-curve" transform="translate(10 210) rotate(-124) scale(0.86)"/>
+      <path class="blob" d="M48 118c34-48 98-58 142-22 38 32 32 92-12 118-48 28-108 12-138-38-18-28-14-42 8-58z"/>
+      <path class="flow flow--light" d="M18 198c58-28 108 12 158-22 38-26 72-8 98 18"/>
+      <path class="sprig" d="M88 248v-92M88 228c18 12 32 4 42-12M88 198c22-6 38-22 48-38M88 168c16-18 28-34 36-52"/>
+      <use href="#coast-palm" transform="translate(198 6) rotate(24) scale(0.88)"/>
+      <use href="#coast-palm-curve" transform="translate(6 198) rotate(-142) scale(0.78)"/>
     </svg>
   </div>
   <div class="wrap">
     <header class="sec-head">
-      <span class="idx">05</span>
-      <h2 data-i18n="s05-h2">Being found</h2>
+      <span class="idx">03</span>
+      <h2 data-i18n="s02-h2">One kitchen, changing shape as the day goes on</h2>
     </header>
-    <p class="lead" data-i18n="s05-lead">Almost everybody who visits Nice, and a good half of the people who live there, will at some point type a version of the same question into a phone. Most operators treat that as something to worry about once the doors are open. It seems more sensible to choose the questions we intend to answer before we choose the menu.</p>
+    <p class="lead" data-i18n="s02-lead">The idea is not a café with food added as an afterthought, nor a restaurant that happens to serve coffee in the morning. It is a single kitchen working to one standard, doing more or less elaborate things depending on the hour and the month.</p>
 
-    <div class="tiers">
-    <div class="tier">
-      <div class="cap" data-i18n="s05-cap1">Closed for good</div>
-      <div class="qline"><span class="ask" data-i18n="s05-q1a">Best socca in Nice</span><span class="who" data-i18n="s05-q1w">Chez Pipo since 1923, Chez Theresa since 1925</span></div>
-      <div class="qline"><span class="ask" data-i18n="s05-q2a">Best ice cream in Nice</span><span class="who" data-i18n="s05-q2w">Fenocchio, Place Rossetti, since 1966</span></div>
-      <div class="qline"><span class="ask" data-i18n="s05-q3a">Best Niçoise cooking</span><span class="who" data-i18n="s05-q3w">La Merenda, Le Safari</span></div>
-      <div class="qline"><span class="ask" data-i18n="s05-q4a">Best seafood brasserie</span><span class="who" data-i18n="s05-q4w">Café du Turin</span></div>
+    <p data-i18n="s02-p1">The higher spend comes from the quality of what goes into the food, never from putting on a different sort of service in the evening. The same chefs, the same suppliers and the same sensibility carry from the first coffee to the last plate, so that somebody who eats lunch there on a Tuesday in February recognises the kitchen when they come back for dinner in July.</p>
+
+    <div class="seasons">
+      <div class="season">
+        <div class="season-photo">
+          <img class="grade" src="images/terrace.jpg" alt="" width="900" height="600" loading="lazy">
+        </div>
+        <div class="season-body">
+          <div class="when"><svg class="mark-ico"><use href="#i-sun"/></svg><span data-i18n="s02-when-summer">June to September, 120 days</span></div>
+          <h3 data-i18n="s02-summer-h3">The full house</h3>
+          <p data-i18n="s02-summer-p">Coffee and pastry from early. Lunch with the terrace at capacity. Aperitivo running into dinner, with the full brigade and a second service. This is where most of the year's revenue is made, and the place is built to take it.</p>
+        </div>
+      </div>
+      <div class="season">
+        <div class="season-photo">
+          <img class="grade" src="images/cafe.jpg" alt="" width="900" height="600" loading="lazy">
+        </div>
+        <div class="season-body">
+          <div class="when"><svg class="mark-ico"><use href="#i-moon"/></svg><span data-i18n="s02-when-winter">October to May, 210 days</span></div>
+          <h3 data-i18n="s02-winter-h3">The core rhythm</h3>
+          <p data-i18n="s02-winter-p">Coffee and pastry from early, lunch service, and the door closes after it. A core team, no evening cover, and a business that runs on residents, students and people who work nearby rather than on visitors.</p>
+        </div>
+      </div>
     </div>
-
-    <div class="tier">
-      <div class="cap" data-i18n="s05-cap2">Modern, and already taken</div>
-      <div class="qline"><span class="ask" data-i18n="s05-q5a">Best burger in Nice</span><span class="who" data-i18n="s05-q5w">Bubu, Le Bavastro</span></div>
-      <div class="qline"><span class="ask" data-i18n="s05-q6a">Best brunch in Nice</span><span class="who" data-i18n="s05-q6w">Café Marché, Popote d'Ondine</span></div>
-      <div class="qline"><span class="ask" data-i18n="s05-q7a">Best natural wine bar</span><span class="who" data-i18n="s05-q7w">La Cave Du Cours, La Part des Anges</span></div>
-      <div class="qline"><span class="ask" data-i18n="s05-q8a">Best pizza in Nice</span><span class="who" data-i18n="s05-q8w">Pizza Pili, Le Safari</span></div>
-    </div>
-
-    <div class="tier is-open">
-      <div class="cap" data-i18n="s05-cap3">Genuinely open</div>
-      <div class="qline open"><span class="ask" data-i18n="s05-q9a">Best coffee in Nice</span><span class="who" data-i18n="s05-q9w">No settled answer</span></div>
-      <div class="qline open"><span class="ask" data-i18n="s05-q10a">Best breakfast in Nice</span><span class="who" data-i18n="s05-q10w">Every guide disagrees</span></div>
-      <div class="qline open"><span class="ask" data-i18n="s05-q11a">Best place to work in Nice</span><span class="who" data-i18n="s05-q11w">Barely written about</span></div>
-      <div class="qline open"><span class="ask" data-i18n="s05-q12a">Best iced coffee in Nice</span><span class="who" data-i18n="s05-q12w">Nobody has claimed it</span></div>
-    </div>
-    </div>
-
-    <p data-i18n="s05-p1">Breakfast is the most interesting of the four. Every guide to the city names a different set of places, and one or two resort to inventing sub-categories because no single address commands the answer. It is worth separating from brunch, which is thoroughly taken. Brunch is a weekend occasion, whereas breakfast is a weekday habit, and it is habit that keeps a room full through the winter.</p>
-
-    <p data-i18n="s05-p2">Working from a café barely exists as Nice writing at all, while Paris supports several dedicated guides to the subject, and Nice has thirty thousand students and a growing office population who need somewhere to sit. Iced coffee has no Nice answer whatsoever, in a city that is warm for five months of the year.</p>
-
-    <p class="quote" data-i18n="s05-quote">Nobody out-heritages Nice, but there is a good deal of room to be more modern than it currently is.</p>
-
-    <p data-i18n="s05-p3">All four of those questions are answered by the same room, in the same hours, with the same product. Coffee is the front door, breakfast is the reason to return tomorrow, working is the reason to stay two hours, and iced coffee is the thing that leaves the building in somebody's hand. Every one of them fills the lunch tables.</p>
-
-    <h3 data-i18n="s05-h3">How they get won</h3>
-    <p data-i18n="s05-p4">Local ranking runs on how recently and how consistently people have written about a place, and on details that can be verified rather than asserted. That makes it a matter of running the business well rather than of marketing it hard. Naming the roaster and the origin, and being straightforward about who is making the coffee, gives people something concrete to repeat. A deliberate programme of asking for reviews in the first ninety days, built into how the room is run rather than bolted on afterwards, does most of the rest. Recognition does more than either, because somebody who is greeted by name and handed their usual will write about it, and a well served stranger usually will not.</p>
 
     <div class="passage">
-      <p data-i18n="s05-passage">There is also an advantage in simply staying open. A great many independent places in Nice close or cut back hard through the winter, and their standing in local search weakens a little every year as a result. A business whose weekday trade comes from residents, students and nearby offices can keep going through the quiet months on its own demand, and the gap widens slightly with every season.</p>
+      <p data-i18n="s02-passage">Flexing the day by season rather than trading the same hours all year is what makes the economics work. An evening brigade only goes on the payroll in the months when there are people to feed, and the weekday lunch trade carries the quieter part of the year on its own. The result is roughly €927,000 of revenue at around 16% EBE, which is better than either a lunch-only operation running all year or a full dinner operation doing the same.</p>
     </div>
   </div>
 </section>
 
-<section id="welcome">
-  <div class="coast-deco coast-deco--br" aria-hidden="true">
+<section class="linen" id="economics">
+  <div class="coast-deco coast-deco--tr" aria-hidden="true">
     <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-      <path class="flow" d="M22 242c54-42 104-12 154-52 38-28 78-18 112 6"/>
-      <path class="flow flow--light" d="M42 272c68-32 118-2 158-38"/>
-      <path class="sprig" d="M242 88v72M242 108c-16-10-30 0-40 14M242 128c-18 2-30 14-40 26"/>
-      <use href="#coast-palm" transform="translate(198 10) rotate(16) scale(0.88)"/>
-      <use href="#coast-palm-curve" transform="translate(14 198) rotate(-116) scale(0.76)"/>
+      <path class="flow" d="M24 228c48-58 108-38 158-88 32-34 72-28 108-8"/>
+      <path class="flow flow--light" d="M44 258c62-42 108-12 148-52"/>
+      <path class="sprig" d="M228 42v78M228 62c-16-12-32-4-42 10M228 82c-20 2-34 16-44 30"/>
+      <use href="#coast-palm" transform="translate(188 8) rotate(14) scale(0.85)"/>
+      <use href="#coast-palm-curve" transform="translate(12 188) rotate(-118) scale(0.72)"/>
     </svg>
   </div>
   <div class="wrap">
     <header class="sec-head">
-      <span class="idx">06</span>
-      <h2 data-i18n="s06-h2">The room and the welcome</h2>
+      <span class="idx">04</span>
+      <h2 data-i18n="s03-h2">The economics, measured against real Nice accounts</h2>
     </header>
-    <p class="lead" data-i18n="s06-lead">Mexican food is already served in Nice and there is no need to add to it. What the city is short of is not a cuisine but a manner of looking after people, and that is the thing this group actually has to bring.</p>
+    <p class="lead" data-i18n="s03-lead">The model assumes 120 peak days at around 220 transactions on a blended ticket of €22, and 210 quieter days at 110 transactions on €15. It is drawn for a house of roughly 100 to 120 square metres, with about 40 covers inside and 20 on the terrace.</p>
 
-    <p data-i18n="s06-p1">The published complaint about coffee in Nice is that it is expensive and unremarkable, which is as much a judgement about how customers are treated as about what is in the cup. Latin American hospitality is warmer by habit than French café convention tends to be, it cannot be copied by the place two doors down, and it costs nothing in service time. Everything else that makes the room distinctive has to sit alongside the transaction rather than inside it, because anything that slows the counter down works against the format.</p>
-
-    <figure class="band">
-      <img class="grade" src="images/terrace.jpg" alt="" width="1200" height="800" loading="lazy">
-    </figure>
-
-    <div class="steps">
-      <div class="step">
-        <h3 data-i18n="s06-s1-h3">A second counter for regulars</h3>
-        <p data-i18n="s06-s1-p">Somewhere for standing orders and familiar faces to be handed a coffee without queueing behind a visitor still reading the menu. It serves the locals properly, and it has the useful side effect of showing every visitor that the place is genuinely somebody's local rather than a room arranged for tourists.</p>
-      </div>
-      <div class="step">
-        <h3 data-i18n="s06-s2-h3">Something to take away</h3>
-        <p data-i18n="s06-s2-p">Canned cold brew and bottled filter from a fridge by the door. Full price, no time at the machine, the best margin in the building, and the name travels out into the city in somebody's hand. Sold in returnable glass, every one of them carries a small reason to come back.</p>
-      </div>
-      <div class="step">
-        <h3 data-i18n="s06-s3-h3">A short menu, properly done</h3>
-        <p data-i18n="s06-s3-p">Restraint reads as confidence, and it is faster to cook, quicker to order from and less wasteful besides. In a market whose complaint is that things are unremarkable, six dishes done beautifully will beat twenty done adequately.</p>
-      </div>
-      <div class="step">
-        <h3 data-i18n="s06-s4-h3">The terrace treated as the main room</h3>
-        <p data-i18n="s06-s4-p">Most places treat the terrace as spillover. It is worth treating it as the point: shade, comfortable chairs and an hour of sitting without being moved on. The counter earns its money on speed and the terrace earns its money on the time people are willing to spend there.</p>
-      </div>
+    <div class="scroll">
+      <table>
+        <tr><th data-i18n="s03-th-line">Line</th><th class="fig" data-i18n="s03-th-share">Share</th><th class="fig" data-i18n="s03-th-euro">Euro</th></tr>
+        <tr><td data-i18n="s03-r1">Revenue, peak season</td><td class="fig">63%</td><td class="fig">580,800</td></tr>
+        <tr><td data-i18n="s03-r2">Revenue, off-peak</td><td class="fig">37%</td><td class="fig">346,500</td></tr>
+        <tr><td data-i18n="s03-r3">Food and beverage</td><td class="fig">28%</td><td class="fig">(260,000)</td></tr>
+        <tr><td data-i18n="s03-r4">Payroll, fully loaded</td><td class="fig">40%</td><td class="fig">(371,000)</td></tr>
+        <tr><td data-i18n="s03-r5">Rent</td><td class="fig">4.2%</td><td class="fig">(38,500)</td></tr>
+        <tr><td data-i18n="s03-r6">Other charges</td><td class="fig">12%</td><td class="fig">(111,000)</td></tr>
+        <tr class="sum"><td>EBE</td><td class="fig">16%</td><td class="fig">146,800</td></tr>
+      </table>
     </div>
+    <p class="fnote" data-i18n="s03-fnote">A trading restaurant of 120 covers in the Carré d'Or currently runs at 15% EBE on around €830,000 of revenue, so the model sits a little above a proven local comparable rather than far beyond one.</p>
 
-    <div class="passage">
-      <p data-i18n="s06-passage">The thing that compounds over time is recognition. Knowing somebody's order, their name and what happened to them last week costs nothing, cannot be bought by a competitor and is the actual reason a person comes four times a week rather than twice a month. The difficulty is that it usually lives in one barista's memory and leaves when they do, so it needs building into how the room is run: named tabs, a note of the usual order, and a handover between shifts that covers people rather than only stock.</p>
+    <h3 data-i18n="s03-h3-rent">The rent test</h3>
+    <p data-i18n="s03-p-rent">Daniel's rule is that a single good trading day ought to cover a month's rent, and it is a sound piece of discipline because it quietly enforces a rent burden of around five per cent of revenue. On a site at €2,019 a month, one peak day at a €22 ticket needs 92 transactions to clear it, which a busy terrace does before the middle of the afternoon. Across a whole season the site covers its annual rent many times over.</p>
+
+    <div class="numbers">
+      <div class="num-item"><span class="v">28%</span><span class="k" data-i18n="s03-n1">Food and beverage cost, in line with the sector</span></div>
+      <div class="num-item"><span class="v">40%</span><span class="k" data-i18n="s03-n2">Payroll, inside the healthy band of 35 to 45%</span></div>
+      <div class="num-item"><span class="v">4.2%</span><span class="k" data-i18n="s03-n3">Rent burden, comfortably under the usual 8 to 10%</span></div>
     </div>
-  </div>
-</section>
-
-<section class="pale" id="journey">
-  <div class="wrap">
-    <header class="sec-head">
-      <h2>How a visitor actually experiences it</h2>
-    </header>
-    <p class="lead">A visitor to Nice stays about three nights, which means they can plausibly come back three or four times in a single trip. We are not trying to win them for life. We are trying to become their place for that trip, and almost everything that gets in the way is free to fix.</p>
-  </div>
-
-  <div class="journey-scroller">
-    <div class="journey-track" id="journey-track" tabindex="0" role="region" aria-label="Visitor journey stages">
-      <article class="journey-card">
-        <span class="journey-num">1</span>
-        <h3>The night before</h3>
-        <p class="journey-think">Thinking: I get six meals on this trip and I do not want to waste one.</p>
-        <p class="journey-break">They cannot tell recency from volume. A place with four hundred reviews averaging 4.3 may have been coasting since 2019. Google offers no way to tell, so they default to whichever has the most photographs, usually the most touristed and least good.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>A steady flow of reviews from the last thirty days proves the place is good now, which a high average cannot. Photographs show the room with people in it at eight on a Tuesday rather than a styled flat lay.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-
-      <article class="journey-card">
-        <span class="journey-num">2</span>
-        <h3>The decision</h3>
-        <p class="journey-think">Thinking: They all say the same things. How do I choose?</p>
-        <p class="journey-break">Every café in Nice claims artisanal, fait maison, specialty. The words have stopped carrying information, so visitors discount all of them equally.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>Say things that can be checked. Name the roaster, the origin, who is behind the counter. Open every day, half seven to six, all year, does more work than any adjective because it is falsifiable.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-
-      <article class="journey-card">
-        <span class="journey-num">3</span>
-        <h3>Arrival on the street</h3>
-        <p class="journey-think">Thinking: Is this for me or for them? Am I about to be overcharged?</p>
-        <p class="journey-break">French shopfronts give almost no read. A beloved local institution and a tourist trap can look identical, and Nice has enough of the latter that visitors arrive primed for it.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>Prices go on a board outside, legibly, including the terrace. And what they see through the glass matters: people at the counter being handed coffees they did not have to order answers the question without a word.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-
-      <article class="journey-card">
-        <span class="journey-num">4</span>
-        <h3>The threshold</h3>
-        <p class="journey-think">Thinking: I do not know the rules here.</p>
-        <p class="journey-break">The highest drop-off point in the whole journey. French café convention is unwritten and varies by place. Getting it wrong in front of a full room is a small public humiliation, and people leave rather than risk it. Nobody reports this, because they never became a customer.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>Someone acknowledges them within three seconds. Not seats them, just makes eye contact and says how it works. Sit anywhere, we come to you. Five words that dissolve the entire problem, and the one behaviour in the room worth the most.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-
-      <article class="journey-card">
-        <span class="journey-num">5</span>
-        <h3>The language moment</h3>
-        <p class="journey-think">Thinking: My French is bad and I am about to be an inconvenience.</p>
-        <p class="journey-break">The visitor opens in bad French, the server switches to English, and the visitor reads that switch as a correction. It is meant as helpfulness and lands as judgement.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>Let them finish in French, answer in French, let them choose to switch. If they visibly struggle, switch without commenting on it. Never announce that we speak English, which tells them their attempt failed.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-
-      <article class="journey-card">
-        <span class="journey-num">6</span>
-        <h3>The menu</h3>
-        <p class="journey-think">Thinking: I cannot tell what is good, what it is, or how long it takes.</p>
-        <p class="journey-break">Under that load people order the safest recognisable item, usually the cheapest and least interesting. They have a worse meal and we take less money, both caused by the same failure.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>A short menu halves the load. A time marker against each item, five minutes for coffee, twenty for a plate, forty for the full lunch. One line of English beneath each dish describing rather than translating, in smaller type, so a French reader ignores it and an English reader is rescued by it.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-
-      <article class="journey-card">
-        <span class="journey-num">7</span>
-        <h3>Ordering</h3>
-        <p class="journey-think">Thinking: I would ask what is good, but not in French.</p>
-        <p class="journey-break">They want a recommendation and asking is effortful, so most do not. They order without the thing that would have made the meal memorable.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>Offer before being asked. The thing to have this week is X, delivered unprompted at every table, as a scripted behaviour rather than a personality trait. It raises the ticket and gives them something to tell people about.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-
-      <article class="journey-card">
-        <span class="journey-num">8</span>
-        <h3>The wait</h3>
-        <p class="journey-think">Thinking: I have a museum booking. Is this going to take an hour?</p>
-        <p class="journey-break">Nobody tells them. Uncertainty about duration is why time-pressed visitors take a sandwich instead of sitting down, and why the middle of the day underperforms across tourist areas.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>The menu already answered it, so the anxiety largely does not arise. Anything running late gets acknowledged before the customer notices. Told another five minutes, they stay comfortable. Left to guess, they start calculating.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-
-      <article class="journey-card">
-        <span class="journey-num">9</span>
-        <h3>During</h3>
-        <p class="journey-think">Thinking: This is nice.</p>
-        <p class="journey-break">Nothing goes wrong, which is the problem. A pleasant, competent meal produces no memory and no review. Most places lose the trip here by being merely fine.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>One thing per visit that was not transactional. Recognising them from yesterday. A word about where the coffee comes from. Being told what to do with their afternoon. It does not need to be the same gesture, it needs to be one.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-
-      <article class="journey-card">
-        <span class="journey-num">10</span>
-        <h3>Payment</h3>
-        <p class="journey-think">Thinking: I am finished and now I am waiting.</p>
-        <p class="journey-break">The most complained about moment in French hospitality, landing at the worst point in the journey. The good feeling drains out while they try to catch an eye. It is also the last thing that happens, so it is disproportionately what they remember and write about.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>Bring the bill unprompted once plates are cleared, assuming a visitor is in a hurry until proven otherwise. Offer paying at the counter when it arrives. Neither costs anything, and few places bother, which makes it ownable.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-
-      <article class="journey-card">
-        <span class="journey-num">11</span>
-        <h3>Leaving</h3>
-        <p class="journey-think">Thinking: That was good. Where shall we go tomorrow?</p>
-        <p class="journey-break">Nothing brings them back. They had a good time and will now go elsewhere, because there is no reason not to. The trip is three days and we got one visit.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>We open at half seven if you want coffee before the train. One sentence, said to every departing visitor, is the difference between one transaction and three. The canned coffee sits by the door for the same reason.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-
-      <article class="journey-card">
-        <span class="journey-num">12</span>
-        <h3>The review</h3>
-        <p class="journey-think">Thinking: On the train home, writing while it is still warm.</p>
-        <p class="journey-break">Most places never ask, so only the annoyed and the delighted write anything, and the annoyed write faster.</p>
-        <div class="journey-do">
-          <div class="journey-do-inner">
-            <div class="journey-do-body">
-              <span class="journey-do-label">What we do</span>
-              <p>Ask once, after the second visit rather than the first. Someone who came back has already decided they like it. What they write was determined twelve stages ago: the price was the same outside, they told me how long it would take, the locals were queueing, they brought the bill without being asked.</p>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="journey-toggle" aria-expanded="false">What we do</button>
-      </article>
-    </div>
-  </div>
-
-  <div class="wrap">
-    <div class="journey-controls">
-      <div class="journey-progress">
-        <div class="journey-progress-rail" aria-hidden="true">
-          <div class="journey-progress-fill" id="journey-progress-fill"></div>
-        </div>
-        <span class="journey-counter" id="journey-counter" aria-live="polite">1 / 12</span>
-      </div>
-      <div class="journey-nav">
-        <button type="button" class="journey-btn" id="journey-prev" aria-label="Previous stage" disabled>
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 2.5 4 7l4.5 4.5"/></svg>
-        </button>
-        <button type="button" class="journey-btn" id="journey-next" aria-label="Next stage">
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 2.5 10 7l-4.5 4.5"/></svg>
-        </button>
-      </div>
-    </div>
-    <p class="journey-close">Not one of these needs capital. There is no line for any of it in the build cost. It is training, menu design, a board outside and a handful of sentences we decide to say. Each one is engineered to produce the review that wins the searches, which is why the welcome and the search strategy are the same piece of work approached from opposite ends.</p>
   </div>
 </section>
 
@@ -1503,7 +1259,7 @@
   </div>
   <div class="wrap">
     <header class="sec-head">
-      <span class="idx">07</span>
+      <span class="idx">05</span>
       <h2 data-i18n="s07-h2">What it costs, and what it becomes</h2>
     </header>
     <p class="lead" data-i18n="s07-lead">The whole thing opens for €180,000, and that assumes buying a site with a working kitchen and extraction already installed rather than fitting out an empty shell. The discipline lies mostly in what we decline to overspend on.</p>
@@ -1533,11 +1289,105 @@
       <p data-i18n="s07-passage">One line is not worth trimming. Restaurant budgets rarely come apart on the large numbers; they come apart on the ones nobody counted. Three months of working capital alongside a spring opening is careful. Two months would not be, and no saving found elsewhere would be worth the risk of it.</p>
     </div>
 
-    <p class="spaced" data-i18n="s07-p1">Fonds de commerce in France change hands at somewhere between 60 and 150 per cent of average annual revenue. A business settled at €900,000 is therefore worth between €540,000 and €1.35 million as something that can be sold, and that value grows with every year of trading history, every review and every bit of ground held in local search.</p>
+    <p class="spaced" data-i18n="s07-p1">Fonds de commerce in France change hands at somewhere between 60 and 150 per cent of average annual revenue. A business settled at €927,000 is therefore worth between €540,000 and €1.35 million as something that can be sold, and that value grows with every year of trading history, every review and every bit of ground held in local search.</p>
 
-    <p data-i18n="s07-p2">Beyond the single room, this would be the group's first address in Europe. A Nice business that works becomes a template, a set of supplier relationships, a French operating structure and a credential in a market that takes hospitality seriously. Casa Kinta took Grupo Marea from one restaurant to a portfolio. This would take the portfolio across an ocean.</p>
+    <p data-i18n="s07-p2">Beyond the single house, this would be the group's first address in Europe. A Nice business that works becomes a template, a set of supplier relationships, a French operating structure and a credential in a market that takes hospitality seriously. Casa Kinta took Grupo Marea from one restaurant to a portfolio. This would take the portfolio across an ocean.</p>
 
     <p data-i18n="s07-p3">The early years pay in what the business is worth rather than in what it distributes, which is normal for hospitality and is the right trade when the asset appreciates alongside its reputation.</p>
+  
+    <div class="passage risk">
+      <h3 data-i18n="s05-risk-h3">What we are accepting</h3>
+      <p data-i18n="s05-risk-p">Three things are genuinely uncertain and worth stating plainly. The business is weighted towards a four month season, so a poor summer costs more than a poor winter. The head chef's salary is the one cost that does not flex with trade, running twelve months against four intense ones. And profitability typically appears after eighteen to twenty four months, with roughly three in ten restaurants closing inside three years. None of these is a reason not to proceed. All of them are reasons to open in spring rather than autumn, and to hold three months of working capital rather than two.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="deep" id="found">
+  <div class="coast-deco coast-deco--tr" aria-hidden="true">
+    <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+      <path class="blob" d="M188 38c58 12 98 62 82 118-14 48-62 82-112 68-58-16-88-78-58-128 18-30 52-52 88-58z"/>
+      <path class="flow flow--light" d="M32 248c58-48 108-18 158-58 42-34 88-22 122 2"/>
+      <path class="sprig" d="M248 68v82M248 88c-18-10-34 2-44 16M248 108c-22 4-36 20-48 34"/>
+      <use href="#coast-palm" transform="translate(208 6) rotate(20) scale(0.94)"/>
+      <use href="#coast-palm-curve" transform="translate(10 210) rotate(-124) scale(0.86)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="idx">06</span>
+      <h2 data-i18n="s05-h2">Being found</h2>
+    </header>
+    <p class="lead" data-i18n="s05-lead">Almost everybody who visits Nice, and a good half of the people who live there, will at some point type a version of the same question into a phone. Most operators treat that as something to worry about once the doors are open. It seems more sensible to choose the questions we intend to answer before we choose the menu.</p>
+
+    <p data-i18n="s05-p1">Breakfast is the most interesting of the four. Every guide to the city names a different set of places, and one or two resort to inventing sub-categories because no single address commands the answer. It is worth separating from brunch, which is thoroughly taken. Brunch is a weekend occasion, whereas breakfast is a weekday habit, and it is habit that keeps the tables full through the winter.</p>
+
+    <p data-i18n="s05-p2">Working from a café barely exists as Nice writing at all, while Paris supports several dedicated guides to the subject, and Nice has thirty thousand students and a growing office population who need somewhere to sit. Iced coffee has no Nice answer whatsoever, in a city that is warm for five months of the year.</p>
+
+    <p class="quote" data-i18n="s05-quote">Nobody out-heritages Nice, but there is a good deal of room to be more modern than it currently is.</p>
+
+    <p data-i18n="s05-p3">All four of those questions are answered by the same house, in the same hours, with the same product. Coffee is the front door, breakfast is the reason to return tomorrow, working is the reason to stay two hours, and iced coffee is the thing that leaves the building in somebody's hand. Every one of them fills the lunch tables.</p>
+
+    <h3 data-i18n="s05-h3">How they get won</h3>
+    <p data-i18n="s05-p4">Local ranking runs on how recently and how consistently people have written about a place, and on details that can be verified rather than asserted. That makes it a matter of running the business well rather than of marketing it hard. Naming the roaster and the origin, and being straightforward about who is making the coffee, gives people something concrete to repeat. A deliberate programme of asking for reviews in the first ninety days, built into how the house is run rather than bolted on afterwards, does most of the rest. Recognition does more than either, because somebody who is greeted by name and handed their usual will write about it, and a well served stranger usually will not.</p>
+
+    <div class="passage">
+      <p data-i18n="s05-passage">There is also an advantage in simply staying open. A great many independent places in Nice close or cut back hard through the winter, and their standing in local search weakens a little every year as a result. A business whose weekday trade comes from residents, students and nearby offices can keep going through the quiet months on its own demand, and the gap widens slightly with every season.</p>
+    </div>
+  </div>
+</section>
+
+<section id="welcome">
+  <div class="coast-deco coast-deco--br" aria-hidden="true">
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <path class="flow" d="M22 242c54-42 104-12 154-52 38-28 78-18 112 6"/>
+      <path class="flow flow--light" d="M42 272c68-32 118-2 158-38"/>
+      <path class="sprig" d="M242 88v72M242 108c-16-10-30 0-40 14M242 128c-18 2-30 14-40 26"/>
+      <use href="#coast-palm" transform="translate(198 10) rotate(16) scale(0.88)"/>
+      <use href="#coast-palm-curve" transform="translate(14 198) rotate(-116) scale(0.76)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="idx">07</span>
+      <h2 data-i18n="s06-h2">The welcome</h2>
+    </header>
+    <p class="lead" data-i18n="s06-lead">What Nice is short of is not a cuisine but a manner of looking after people, and that is what this group actually brings.</p>
+
+    <p data-i18n="s06-p1">The published complaint about coffee in Nice is that it is expensive and unremarkable, which is as much a judgement about how customers are treated as about what is in the cup. Latin American hospitality is warmer by habit than French café convention tends to be, it cannot be copied by the place two doors down, and it costs nothing in service time. Everything else that makes the place distinctive has to sit alongside the transaction rather than inside it, because anything that slows the counter down works against the format.</p>
+
+    <figure class="band">
+      <img class="grade" src="images/terrace.jpg" alt="" width="1200" height="800" loading="lazy">
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <h3 data-i18n="s06-s1-h3">A second counter for regulars</h3>
+        <p data-i18n="s06-s1-p">Somewhere for standing orders and familiar faces to be handed a coffee without queueing behind a visitor still reading the menu. It serves the locals properly, and it has the useful side effect of showing every visitor that the place is genuinely somebody's local rather than somewhere arranged for tourists.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="s06-s2-h3">Something to take away</h3>
+        <p data-i18n="s06-s2-p">Canned cold brew and bottled filter from a fridge by the door. Full price, no time at the machine, the best margin in the building, and the name travels out into the city in somebody's hand. Sold in returnable glass, every one of them carries a small reason to come back.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="s06-s3-h3">A short menu, properly done</h3>
+        <p data-i18n="s06-s3-p">Restraint reads as confidence, and it is faster to cook, quicker to order from and less wasteful besides. In a market whose complaint is that things are unremarkable, six dishes done beautifully will beat twenty done adequately.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="s06-s4-h3">The terrace treated as the main event</h3>
+        <p data-i18n="s06-s4-p">Most places treat the terrace as spillover. It is worth treating it as the point: shade, comfortable chairs and an hour of sitting without being moved on. The counter earns its money on speed and the terrace earns its money on the time people are willing to spend there.</p>
+      </div>
+    </div>
+
+    <div class="passage">
+      <p data-i18n="s06-passage">The thing that compounds over time is recognition. Knowing somebody's order, their name and what happened to them last week costs nothing, cannot be bought by a competitor and is the actual reason a person comes four times a week rather than twice a month. The difficulty is that it usually lives in one barista's memory and leaves when they do, so it needs building into how the house is run: named tabs, a note of the usual order, and a handover between shifts that covers people rather than only stock.</p>
+    </div>
+  
+    <div class="journey-teaser">
+      <p data-i18n="s07-teaser">A visitor to Nice stays about three nights, which means they can plausibly come back three or four times in a single trip. We are not trying to win them for life, we are trying to become their place for that trip. There are twelve points between searching on a phone the night before and writing a review on the train home where that is won or lost, and none of them needs capital.</p>
+      <p><a class="text-link" href="/journey" data-i18n="s07-teaser-link">Walk through the twelve stages</a></p>
+    </div>
+
   </div>
 </section>
 
@@ -1565,7 +1415,7 @@
       </div>
       <div class="step">
         <h3 data-i18n="s08-s2-h3">Ticket and throughput from the kitchen</h3>
-        <p data-i18n="s08-s2-p">Real numbers from Daniel and Rodrigo for the coffee and lunch format, replacing sector averages with what the two of them already know from running rooms.</p>
+        <p data-i18n="s08-s2-p">Real numbers from Daniel and Rodrigo for the coffee and lunch format, replacing sector averages with what the two of them already know from running places.</p>
       </div>
       <div class="step">
         <h3 data-i18n="s08-s3-h3">A shortlist held against the rent rule</h3>
@@ -1577,7 +1427,7 @@
       </div>
     </div>
 
-    <p class="quote closing" data-i18n="s08-quote">Nice has the visitors, the students, the offices and the money. What it lacks is somewhere everyone agrees on for a coffee, for breakfast, or for sitting down to work, and one room could answer all three.</p>
+    <p class="quote closing" data-i18n="s08-quote">Nice has the visitors, the students, the offices and the money. What it lacks is somewhere everyone agrees on for a coffee, for breakfast, or for sitting down to work, and one place could answer all three.</p>
   </div>
 </section>
 
@@ -1602,13 +1452,18 @@
 <script>
   (function(){
   var links = Array.prototype.slice.call(document.querySelectorAll('nav.rail a'));
-  var ids = links.map(function(a){ return a.getAttribute('href').slice(1); });
+  var sectionLinks = links.filter(function(a){
+    var href = a.getAttribute('href') || '';
+    return href.charAt(0) === '#';
+  });
+  var ids = sectionLinks.map(function(a){ return a.getAttribute('href').slice(1); });
   var sections = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
 
   function setCurrent(id){
     links.forEach(function(a){
-      if(a.getAttribute('href') === '#' + id) a.setAttribute('aria-current','true');
-      else a.removeAttribute('aria-current');
+      var href = a.getAttribute('href') || '';
+      if(href === '#' + id) a.setAttribute('aria-current','true');
+      else if(href.charAt(0) === '#') a.removeAttribute('aria-current');
     });
     document.body.classList.toggle('dusk-nav', id === 'found');
   }
@@ -1741,7 +1596,7 @@
     btn.addEventListener('click', function(){
       var open = card.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.textContent = open ? 'Close' : 'What we do';
+      btn.textContent = open ? 'Close' : 'What we do about it';
     });
   });
 
