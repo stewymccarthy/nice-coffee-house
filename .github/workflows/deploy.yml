@@ -2,8 +2,7 @@ name: Deploy to Vercel
 
 on:
   push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -18,4 +17,9 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-version: 59.11.7
-          deployment-target: production
+          # CLI mode: --prod is required for production. The typed `target`
+          # input only applies to experimental API mode, so main must pass
+          # --prod via vercel-args or production never updates.
+          vercel-args: ${{ github.ref == 'refs/heads/main' && '--prod' || '' }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-comment: true
