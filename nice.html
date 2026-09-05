@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A coffee house in Nice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#F6EFE6;
+    --sand-deep:#EFE6D8;
+    --linen:#FBF7F0;
+    --foam:#FDFAF6;
+    --terracotta:#C46A4A;
+    --terracotta-deep:#A85A3C;
+    --clay:#B8896A;
+    --stone:#8C7D6F;
+    --ink:#2C241C;
+    --ink-soft:#5C5248;
+    --ink-faint:#8A7E72;
+    --rule:#D9CDBE;
+    --rule-soft:#E8DDD0;
+    --dusk:#2F2721;
+    --dusk-mid:#3A312A;
+    --cream:#F3EBE0;
+    --gold:#D4B896;
+    --pale:#FAF5ED;
+    --clay-wash:#EADBC9;
+    --close:#E6D4C0;
+    --measure:720px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Source Serif 4',Georgia,'Times New Roman',serif;
+    font-optical-sizing:auto;
+    font-size:18.5px;
+    font-weight:400;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:400;
+    opacity:0.12;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* One measure — every chapter */
+  .wrap{
+    max-width:var(--measure);
+    margin:0 auto;
+    padding:0 36px;
+    position:relative;
+    z-index:1;
+  }
+
+  /* Coastal atmosphere — peripheral SVG, never on the measure */
+  .coast-deco{
+    position:absolute;
+    pointer-events:none;
+    z-index:0;
+    color:var(--terracotta);
+  }
+  .coast-deco svg{
+    display:block;
+    width:100%;
+    height:100%;
+    overflow:visible;
+  }
+  .coast-deco .blob{fill:currentColor;opacity:0.15;}
+  .coast-deco .flow{
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.35;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    opacity:0.4;
+  }
+  .coast-deco .flow--light{
+    stroke:#fff;
+    opacity:0.58;
+  }
+  .coast-deco .sprig{
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.15;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    opacity:0.36;
+  }
+  .coast-deco .ripple{
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1;
+    stroke-linecap:round;
+    opacity:0.24;
+  }
+  .coast-deco .palm path{
+    fill:none;
+    stroke:var(--terracotta);
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    opacity:0.5;
+  }
+  .coast-deco .palm .palm-stem{stroke-width:1.5;opacity:0.55;}
+  .coast-deco .palm .palm-leaf{stroke-width:1.15;}
+  .coast-deco .palm--fill .palm-leaf{
+    fill:var(--terracotta);
+    fill-opacity:0.1;
+    stroke:var(--terracotta);
+    opacity:0.62;
+  }
+  .coast-deco--br{
+    right:-8%;
+    bottom:-6%;
+    width:min(42vw,380px);
+    height:min(42vw,380px);
+    color:var(--clay);
+  }
+  .coast-deco--tl{
+    left:-10%;
+    top:-4%;
+    width:min(36vw,320px);
+    height:min(36vw,320px);
+    color:var(--terracotta-deep);
+  }
+  .coast-deco--tr{
+    right:-6%;
+    top:6%;
+    width:min(34vw,300px);
+    height:min(34vw,300px);
+    color:var(--clay);
+  }
+  .coast-deco--bl{
+    left:-8%;
+    bottom:2%;
+    width:min(38vw,340px);
+    height:min(38vw,340px);
+    color:var(--terracotta);
+  }
+  section.deep .coast-deco{color:var(--gold);}
+  section.deep .coast-deco .blob{opacity:0.16;}
+  section.deep .coast-deco .flow{opacity:0.3;}
+  section.deep .coast-deco .sprig{opacity:0.26;}
+  section.deep .coast-deco .flow--light{stroke:rgba(253,250,246,0.65);opacity:0.48;}
+  section.deep .coast-deco .ripple{opacity:0.22;}
+  section.deep .coast-deco .palm path{stroke:var(--terracotta);opacity:0.44;}
+  section.deep .coast-deco .palm .palm-stem{opacity:0.5;}
+  section.deep .coast-deco .palm--fill .palm-leaf{fill:var(--terracotta);fill-opacity:0.12;}
+  .coast-deco--hero{
+    right:-4%;
+    bottom:18%;
+    width:min(48vw,440px);
+    height:min(48vw,440px);
+    color:var(--clay);
+    z-index:1;
+    opacity:1;
+  }
+  header.hero .wrap{z-index:2;}
+
+  h1,h2,h3{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-weight:400;
+    margin:0;
+    letter-spacing:-0.018em;
+    color:var(--ink);
+  }
+  h1{font-size:clamp(2.7rem,6.4vw,4.85rem);line-height:1.06;}
+  h2{font-size:clamp(1.85rem,3.6vw,2.55rem);line-height:1.18;}
+  h3{font-size:1.38rem;line-height:1.3;margin:2.5rem 0 0.7rem;}
+  p{margin:0 0 1.2rem 0;}
+  strong{font-weight:600;}
+  a{color:var(--terracotta-deep);}
+  ::selection{background:rgba(196,106,74,0.22);color:var(--ink);}
+  img{max-width:100%;display:block;border:0;}
+  .grade{filter:saturate(0.78) contrast(0.96) sepia(0.14);}
+
+  .kicker{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.68rem;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--terracotta);
+    margin:0 0 1.4rem;
+  }
+  .idx{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.68rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--terracotta);
+    display:block;
+    margin-bottom:0.75rem;
+  }
+
+  /* Mast */
+  .mast{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 36px;pointer-events:none;
+  }
+  .mast span{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.64rem;letter-spacing:0.26em;text-transform:uppercase;
+    color:var(--stone);pointer-events:auto;
+  }
+  .mast .mark{display:flex;align-items:center;gap:10px;color:var(--ink-soft);}
+  .mast .mark .mark-ico{width:16px;height:16px;color:var(--terracotta);}
+  .mast-end{
+    display:flex;align-items:center;gap:14px;pointer-events:auto;
+  }
+  .lang-toggle{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;
+    padding:6px 10px;border:1px solid var(--rule);border-radius:2px;
+    background:var(--foam);color:var(--ink-soft);cursor:pointer;
+    transition:background 0.2s,border-color 0.2s,color 0.2s;
+  }
+  .lang-toggle:hover{border-color:var(--clay);color:var(--ink);}
+  .lang-toggle[aria-pressed="true"]{
+    background:var(--terracotta);border-color:var(--terracotta);color:var(--foam);
+  }
+  body.dusk-nav .lang-toggle{
+    border-color:rgba(212,184,150,0.45);
+    background:rgba(47,39,33,0.55);color:rgba(243,235,224,0.78);
+  }
+  body.dusk-nav .lang-toggle:hover{color:var(--cream);}
+  body.dusk-nav .lang-toggle[aria-pressed="true"]{
+    background:var(--gold);border-color:var(--gold);color:var(--dusk);
+  }
+  body.dusk-nav .mast span{color:rgba(243,235,224,0.62);}
+  body.dusk-nav .mast .mark{color:rgba(243,235,224,0.78);}
+  body.dusk-nav .mast .mark .mark-ico{color:var(--gold);}
+
+  /* Rail */
+  nav.rail{
+    position:fixed;right:28px;top:50%;transform:translateY(-50%);
+    z-index:50;display:flex;flex-direction:column;gap:14px;
+  }
+  nav.rail a{
+    width:8px;height:8px;border-radius:50%;
+    background:transparent;border:1px solid var(--clay);
+    display:block;flex-shrink:0;position:relative;
+    transition:background 0.25s ease,border-color 0.25s ease,transform 0.25s ease;
+  }
+  nav.rail a[aria-current="true"],nav.rail a:hover{
+    background:var(--terracotta);border-color:var(--terracotta);transform:scale(1.15);
+  }
+  nav.rail a span{
+    position:absolute;right:18px;top:50%;transform:translateY(-50%);
+    white-space:nowrap;font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--ink-faint);opacity:0;pointer-events:none;transition:opacity 0.2s ease;
+  }
+  nav.rail a:hover span{opacity:1;}
+  body.dusk-nav nav.rail a{border-color:rgba(212,184,150,0.45);}
+  body.dusk-nav nav.rail a[aria-current="true"],
+  body.dusk-nav nav.rail a:hover{background:var(--gold);border-color:var(--gold);}
+  body.dusk-nav nav.rail a span{color:var(--cream);}
+
+  /* Hero */
+  header.hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:160px 0 96px;position:relative;overflow:hidden;
+    background:var(--sand);scroll-margin-top:0;
+  }
+  header.hero .hero-photo{position:absolute;inset:0;}
+  header.hero .hero-photo img{
+    width:100%;height:100%;object-fit:cover;object-position:center 38%;
+  }
+  header.hero .hero-veil{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(44,36,28,0.28) 0%, rgba(44,36,28,0.06) 32%, rgba(246,239,230,0.45) 58%, var(--sand) 78%);
+    pointer-events:none;
+  }
+  header.hero .wrap{position:relative;z-index:1;}
+  header.hero h1{max-width:22ch;margin-bottom:1.85rem;}
+  header.hero .opening{
+    font-size:1.12rem;color:var(--ink-soft);max-width:52ch;line-height:1.7;
+  }
+  .byline{
+    margin-top:72px;padding-top:22px;border-top:1px solid var(--rule);
+    font-family:'Outfit',system-ui,sans-serif;font-size:0.78rem;
+    letter-spacing:0.04em;color:var(--ink-faint);line-height:1.75;max-width:46ch;
+  }
+
+  /*
+    Chapter grounds — each chapter is a different room.
+    01 pale · 02 quiet · 03 linen · 04 clay · 05 dusk · 06 sand · 07 quiet · 08 close
+  */
+  section{
+    padding:104px 0;
+    position:relative;
+    scroll-margin-top:28px;
+    background:var(--sand);
+    overflow:hidden;
+  }
+  section .wrap{position:relative;z-index:1;}
+  section.pale{background:var(--pale);}
+  section.quiet{background:var(--sand-deep);}
+  section.linen{background:var(--linen);}
+  section.clay{background:var(--clay-wash);}
+  section.close{background:var(--close);}
+  section.deep{
+    background:
+      radial-gradient(ellipse 80% 60% at 18% 0%, rgba(196,106,74,0.14), transparent 52%),
+      linear-gradient(180deg, var(--dusk) 0%, var(--dusk-mid) 100%);
+    color:var(--cream);
+  }
+  section.deep h2,section.deep h3{color:var(--foam);}
+  section.deep h3{margin-top:2.25rem;}
+  section.deep p{color:rgba(243,235,224,0.82);}
+  section.deep strong{color:var(--foam);}
+  section.deep .lead{color:rgba(243,235,224,0.86);}
+  section.deep .idx{color:var(--gold);}
+  section.deep .fnote{color:rgba(243,235,224,0.5);}
+
+  /* Shared chapter title */
+  .sec-head{
+    margin-bottom:1.65rem;
+    padding-bottom:1.2rem;
+    border-bottom:1px solid var(--rule);
+  }
+  .sec-head .idx{margin-bottom:0.65rem;}
+  .sec-head h2{margin:0;max-width:20ch;}
+  section.deep .sec-head{border-bottom-color:rgba(243,235,224,0.16);}
+
+  .lead{
+    font-size:1.12rem;
+    color:var(--ink-soft);
+    line-height:1.68;
+    margin-bottom:1.5rem;
+  }
+
+  /* Full-measure photo band — never beside body copy */
+  .band{
+    margin:48px 0 0;
+    overflow:hidden;
+    background:var(--sand-deep);
+    height:220px;
+  }
+  .band img{width:100%;height:100%;object-fit:cover;}
+
+  /* Numbers */
+  .numbers{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin:48px 0 0;
+  }
+  .num-item{
+    padding:24px 0 0;
+    border-top:1px solid var(--rule);
+  }
+  .num-item .v{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:clamp(1.9rem,3vw,2.45rem);
+    line-height:1.05;
+    display:block;
+    color:var(--terracotta-deep);
+    letter-spacing:-0.02em;
+  }
+  .num-item .k{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    display:block;
+    margin-top:12px;
+    line-height:1.55;
+  }
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;margin:32px 0 8px;font-size:0.95rem;}
+  th{
+    text-align:left;
+    font-family:'Outfit',system-ui,sans-serif;
+    font-weight:400;
+    font-size:0.64rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    padding:0 20px 14px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  td{
+    padding:14px 20px 14px 0;
+    border-bottom:1px solid var(--rule-soft);
+    vertical-align:baseline;
+  }
+  td:last-child,th:last-child{padding-right:0;}
+  .fig{
+    text-align:right;
+    font-family:'Outfit',system-ui,sans-serif;
+    font-variant-numeric:tabular-nums;
+    white-space:nowrap;
+    font-size:0.9rem;
+  }
+  tr.sum td{
+    border-top:1px solid var(--ink);
+    border-bottom:none;
+    font-weight:600;
+    padding-top:18px;
+    color:var(--ink);
+  }
+  tr.sum .fig{color:var(--terracotta-deep);font-weight:500;}
+  .scroll{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    background:var(--foam);
+    padding:8px 24px 10px;
+    margin:32px 0 8px;
+    border:1px solid var(--rule-soft);
+  }
+  .scroll table{min-width:480px;margin:10px 0;}
+  section.quiet .scroll,
+  section.linen .scroll{background:var(--linen);border-color:var(--rule);}
+  .fnote{
+    font-size:0.88rem;
+    color:var(--ink-faint);
+    margin-top:16px;
+    line-height:1.6;
+  }
+
+  /* Seasons — equal paired panels inside the measure */
+  .seasons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    margin:44px 0 0;
+    border:1px solid var(--rule);
+    background:var(--foam);
+    overflow:hidden;
+  }
+  .season{min-width:0;}
+  .season + .season{border-left:1px solid var(--rule);}
+  .season-photo{
+    height:148px;
+    overflow:hidden;
+    background:var(--sand-deep);
+  }
+  .season-photo img{width:100%;height:100%;object-fit:cover;}
+  .season-body{padding:24px 24px 28px;}
+  .season h3{margin:0 0 0.6rem;font-size:1.28rem;}
+  .season .when{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.62rem;
+    color:var(--terracotta);
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .season p{font-size:0.95rem;margin:0;color:var(--ink-soft);line-height:1.6;}
+
+  /* Passage */
+  .passage{
+    margin:44px 0 0;
+    padding:28px 0 0;
+    border-top:1px solid var(--rule);
+    position:relative;
+  }
+  .passage::before{
+    content:"";
+    width:28px;
+    height:2px;
+    background:var(--terracotta);
+    position:absolute;
+    top:-1px;
+    left:0;
+  }
+  .passage p:last-child{margin-bottom:0;}
+  section.deep .passage{border-color:rgba(243,235,224,0.18);}
+  section.deep .passage::before{background:var(--gold);}
+
+  /* Quote */
+  .quote{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(1.45rem,3vw,1.95rem);
+    line-height:1.34;
+    color:var(--terracotta-deep);
+    margin:48px 0 0;
+    max-width:22ch;
+    letter-spacing:-0.015em;
+  }
+  .quote.closing{
+    max-width:28ch;
+    margin-top:56px;
+    padding-top:36px;
+    border-top:1px solid var(--rule);
+  }
+  section.deep .quote{color:var(--gold);}
+
+  /* Query lists — three columns, left-aligned rows */
+  .tiers{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    margin:40px 0 44px;
+    border:1px solid rgba(243,235,224,0.14);
+  }
+  .tier{
+    margin:0;
+    padding:20px 22px 24px;
+    min-width:0;
+  }
+  .tier + .tier{border-left:1px solid rgba(243,235,224,0.14);}
+  .tier .cap{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.64rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:rgba(243,235,224,0.42);
+    padding-bottom:12px;
+    border-bottom:1px solid rgba(243,235,224,0.16);
+    margin-bottom:4px;
+  }
+  .tier.is-open .cap{
+    color:var(--gold);
+    border-bottom-color:rgba(212,184,150,0.35);
+  }
+  .qline{
+    padding:11px 0;
+    border-bottom:1px solid rgba(243,235,224,0.1);
+    font-size:0.98rem;
+    line-height:1.5;
+  }
+  .qline:last-child{border-bottom:none;}
+  .qline .ask{display:block;}
+  .qline .who{
+    display:block;
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.74rem;
+    color:rgba(243,235,224,0.48);
+    letter-spacing:0.02em;
+    margin-top:3px;
+  }
+  .qline.open{color:var(--gold);}
+  .qline.open .who{color:var(--gold);opacity:0.82;}
+
+  /* Engines — text-only 2×2 inside the measure */
+  .engines{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    margin:40px 0 0;
+    border-top:1px solid var(--rule);
+  }
+  .engine{
+    padding:28px 28px 30px 0;
+    border-bottom:1px solid var(--rule-soft);
+    min-width:0;
+  }
+  .engine:nth-child(odd){
+    padding-right:28px;
+    border-right:1px solid var(--rule-soft);
+  }
+  .engine:nth-child(even){padding-left:28px;padding-right:0;}
+  .engine:nth-last-child(-n+2){border-bottom:none;}
+  .engine-top{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:8px;
+  }
+  .engine-top h3{margin:0;font-size:1.28rem;}
+  .engine .count{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.76rem;
+    color:var(--terracotta);
+    margin-bottom:10px;
+    line-height:1.5;
+  }
+  .engine p{font-size:0.95rem;margin:0;color:var(--ink-soft);line-height:1.6;}
+
+  /* Steps — single column, left index */
+  .steps{
+    counter-reset:s;
+    margin:40px 0 0;
+  }
+  .step{
+    counter-increment:s;
+    padding:28px 0 28px 52px;
+    border-bottom:1px solid var(--rule-soft);
+    position:relative;
+  }
+  .step:last-child{border-bottom:none;padding-bottom:0;}
+  .step h3{margin:0 0 0.5rem;}
+  .step h3::before{
+    content:counter(s, decimal-leading-zero);
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.7rem;
+    letter-spacing:0.14em;
+    color:var(--terracotta);
+    position:absolute;
+    left:0;
+    top:32px;
+    font-weight:400;
+  }
+  .step p{margin:0;color:var(--ink-soft);font-size:0.98rem;}
+
+  .mark-ico{
+    width:16px;height:16px;
+    display:block;flex-shrink:0;
+    color:var(--terracotta);
+  }
+  .spaced{margin-top:28px;}
+
+  footer{
+    padding:56px 0 80px;
+    border-top:1px solid var(--rule);
+    background:linear-gradient(180deg, var(--sand) 0%, #EBDDCB 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  footer .coast-deco{opacity:0.92;}
+  footer p{
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    color:var(--ink-faint);
+    margin:0;
+    line-height:1.7;
+  }
+
+  @media (max-width:900px){
+    nav.rail{display:none;}
+    .mast{padding:16px 22px;}
+  }
+  @media (max-width:700px){
+    body{font-size:17px;}
+    .wrap{padding:0 22px;}
+    header.hero{padding:0 0 56px;min-height:auto;display:block;}
+    header.hero .hero-photo{position:relative;inset:auto;height:46vh;}
+    header.hero .wrap{padding-top:40px;}
+    section{padding:72px 0;}
+    .numbers,.seasons,.engines,.tiers{grid-template-columns:1fr;}
+    .tier + .tier{border-left:none;border-top:1px solid rgba(243,235,224,0.14);}
+    .season + .season{border-left:none;border-top:1px solid var(--rule);}
+    .engine:nth-child(odd){padding-right:0;border-right:none;}
+    .engine:nth-child(even){padding-left:0;}
+    .band{height:180px;}
+    .step{padding-left:48px;}
+    .coast-deco{display:none;}
+  }
+
+  @media print{
+    body::before,nav.rail,.mast,.coast-deco{display:none !important;}
+    header.hero{min-height:auto;padding:40px 0;}
+    header.hero .hero-photo{position:relative;height:220px;inset:auto;}
+    section{padding:40px 0;break-inside:avoid;}
+    section.deep,.band,.season-photo{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;left:0;top:0;width:0;height:0">
+  <symbol id="i-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 8h11v5.2A4.8 4.8 0 0 1 11.2 18H9.8A4.8 4.8 0 0 1 5 13.2V8z"/>
+    <path d="M16 9.2h1.6a2.4 2.4 0 1 1 0 4.8H16"/>
+    <path d="M8 20h6"/>
+    <path d="M8.5 4.5c.4.8.7 1.3.7 2.1"/>
+    <path d="M11.5 4.2c.4.8.6 1.3.6 2.2"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round">
+    <circle cx="12" cy="12" r="3.4"/>
+    <path d="M12 3.5v1.8M12 18.7v1.8M3.5 12h1.8M18.7 12h1.8M6.1 6.1l1.3 1.3M16.6 16.6l1.3 1.3M17.9 6.1l-1.3 1.3M7.4 16.6l-1.3 1.3"/>
+  </symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16.2 14.6A6.2 6.2 0 0 1 9.4 7.8 6.4 6.4 0 1 0 16.2 14.6z"/>
+  </symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round">
+    <path d="M3 14.5c2.2-2.4 4.2-2.4 6.4 0 2.2 2.4 4.2 2.4 6.4 0 2.2-2.4 4.2-2.4 5.2-1.2"/>
+    <path d="M3 9.8c2.2-2.4 4.2-2.4 6.4 0 2.2 2.4 4.2 2.4 6.4 0 2.2-2.4 4.2-2.4 5.2-1.2"/>
+  </symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v16H7.5A2.5 2.5 0 0 0 5 21.5z"/>
+    <path d="M5 5.5A2.5 2.5 0 0 1 7.5 8H19"/>
+  </symbol>
+  <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 21V6.5L12 3l7 3.5V21"/>
+    <path d="M9 21v-5h6v5"/>
+    <path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/>
+  </symbol>
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11.5 12 4l8 7.5"/>
+    <path d="M6.5 10.5V20h11V10.5"/>
+  </symbol>
+  <symbol id="coast-palm" viewBox="0 0 100 150">
+    <g class="palm">
+      <path class="palm-stem" d="M50 142 Q48 88 50 14"/>
+      <path class="palm-leaf" d="M50 118 Q26 110 8 96"/>
+      <path class="palm-leaf" d="M50 118 Q74 110 92 96"/>
+      <path class="palm-leaf" d="M50 98 Q20 86 4 66"/>
+      <path class="palm-leaf" d="M50 98 Q80 86 96 66"/>
+      <path class="palm-leaf" d="M50 76 Q16 60 2 34"/>
+      <path class="palm-leaf" d="M50 76 Q84 60 98 34"/>
+      <path class="palm-leaf" d="M50 52 Q22 30 12 6"/>
+      <path class="palm-leaf" d="M50 52 Q78 30 88 6"/>
+    </g>
+  </symbol>
+  <symbol id="coast-palm-curve" viewBox="0 0 120 100">
+    <g class="palm palm--fill">
+      <path class="palm-stem" d="M18 92 Q42 58 58 12"/>
+      <path class="palm-leaf" d="M28 78 Q8 68 2 48"/>
+      <path class="palm-leaf" d="M36 62 Q14 48 6 26"/>
+      <path class="palm-leaf" d="M44 46 Q26 28 18 8"/>
+      <path class="palm-leaf" d="M52 32 Q42 14 38 2"/>
+      <path class="palm-leaf" d="M48 70 Q68 58 82 42"/>
+      <path class="palm-leaf" d="M56 54 Q78 38 94 18"/>
+      <path class="palm-leaf" d="M62 38 Q88 22 108 6"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="mast">
+  <span class="mark"><svg class="mark-ico"><use href="#i-cup"/></svg> Grupo Marea</span>
+  <div class="mast-end">
+    <button type="button" class="lang-toggle" id="lang-toggle" aria-pressed="false" aria-label="Switch to Spanish">ESP</button>
+    <span data-i18n="mast-date">September 2026</span>
+  </div>
+</div>
+
+<nav class="rail" aria-label="Sections" data-i18n-aria="nav-sections">
+  <a href="#opening" aria-current="true"><span data-i18n="nav-opening">Opening</span></a>
+  <a href="#spoken"><span data-i18n="nav-city">The city</span></a>
+  <a href="#room"><span data-i18n="nav-room">The room</span></a>
+  <a href="#economics"><span data-i18n="nav-economics">Economics</span></a>
+  <a href="#customers"><span data-i18n="nav-customers">Customers</span></a>
+  <a href="#found"><span data-i18n="nav-found">Being found</span></a>
+  <a href="#welcome"><span data-i18n="nav-welcome">The welcome</span></a>
+  <a href="#costs"><span data-i18n="nav-costs">What it costs</span></a>
+  <a href="#decision"><span data-i18n="nav-decision">A decision</span></a>
+</nav>
+
+<header class="hero" id="opening">
+  <div class="coast-deco coast-deco--hero" aria-hidden="true">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <path class="blob" d="M228 88c54 6 94 48 86 98-6 44-50 78-100 72-62-8-92-74-62-124 20-34 48-50 76-46z"/>
+      <path class="ripple" d="M32 268c58-18 118-8 178-38"/>
+      <path class="ripple" d="M42 286c58-18 118-8 178-38"/>
+      <path class="ripple" d="M52 304c58-18 118-8 178-38"/>
+      <path class="flow flow--light" d="M24 248c68-52 128-22 188-62 48-34 98-18 142 8"/>
+      <path class="sprig" d="M312 108v68M312 128c-14-10-28 0-36 14M312 148c-18 2-28 14-36 26"/>
+    </svg>
+  </div>
+  <div class="hero-photo" aria-hidden="true">
+    <img class="grade" src="images/hero-nice.jpg" alt="" width="1800" height="1200">
+    <div class="hero-veil"></div>
+  </div>
+  <div class="wrap">
+    <p class="kicker" data-i18n="hero-kicker">A coffee house in Nice</p>
+    <h1 data-i18n="hero-h1">Nice serves twelve million visitors a year and still can't make a decent coffee</h1>
+    <p class="opening" data-i18n="hero-opening">One of the busiest cities in Europe, thirty thousand students, a business district growing to the west, and a coffee and lunch offer that guidebooks politely describe as underwhelming. Twelve million visitors only need to find us once. The neighbourhood will find us every week. We open early on coffee, earn our keep at lunch, and hold the terrace through the long summer evenings.</p>
+    <div class="byline" data-i18n="hero-byline" data-i18n-html>
+      Prepared for Daniel Burgos, Kris Wallenta and Andre, Grupo Marea.<br>
+      September 2026. Name to be agreed.
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="pale" id="spoken">
+  <div class="coast-deco coast-deco--br" aria-hidden="true">
+    <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+      <path class="blob" d="M198 52c62 8 108 58 98 118-8 52-58 92-118 84-72-10-108-88-72-148 24-40 58-58 92-54z"/>
+      <path class="flow flow--light" d="M28 268c52-44 98-18 142-62s88-28 128 8"/>
+      <path class="flow" d="M48 298c68-38 118-8 168-48"/>
+      <path class="ripple" d="M198 118c38 28 68 68 108 48"/>
+      <path class="ripple" d="M208 132c38 28 68 68 108 48"/>
+      <path class="sprig" d="M278 78v88M278 98c-22-10-38 2-48 18M278 118c-26 4-42 22-52 38M278 138c-18 14-34 28-44 48"/>
+      <use href="#coast-palm" transform="translate(248 12) rotate(32) scale(0.92)"/>
+      <use href="#coast-palm-curve" transform="translate(18 228) rotate(-108) scale(0.82)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="idx">01</span>
+      <h2 data-i18n="s01-h2">What is already spoken for, and what is not</h2>
+    </header>
+    <p class="lead" data-i18n="s01-lead">Nice guards its favourites carefully, and most of the categories worth having already belong to somebody. Understanding which ones are genuinely closed is the first useful thing to know, because it saves a great deal of wasted effort later.</p>
+
+    <p data-i18n="s01-p1">Socca has been settled since before the war. Chez Pipo has been firing it in wood ovens since 1923, Chez Theresa since 1925 in an oven built in 1867, and no newcomer is going to displace either of them. Fenocchio has been scooping ice cream on Place Rossetti since 1966 and now runs to something like a hundred flavours. La Merenda still has no telephone and does not need one. These are family businesses with a century of affection behind them, and they should be left alone.</p>
+
+    <p data-i18n="s01-p2">A second group is more recent but no less occupied. Burgers belong to Bubu and Le Bavastro, brunch to Café Marché and Popote d'Ondine, which regularly has a queue at the door. Natural wine belongs to La Cave Du Cours and La Part des Anges. All of these could theoretically be challenged, but doing so would mean spending years building affection against people who already have it, which is a poor use of the group's time and money.</p>
+
+    <p data-i18n="s01-p3">Coffee sits differently. The city has a handful of respected places, Cafés Indien, HUG, French Coffee Shop and Canopée among them, but no single address that everyone names. One published review of a shop that Google itself labels as specialty describes it as overpriced and unremarkable, and argues that coffee in Nice generally underdelivers for what it costs. That is a complaint sitting in public, in a category people already search for, with nobody answering it.</p>
+
+    <p class="quote" data-i18n="s01-quote">A city this size should have a coffee everyone agrees on, and it does not.</p>
+
+    <figure class="band">
+      <img class="grade" src="images/coffee.jpg" alt="" width="1200" height="800" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<section class="quiet" id="room">
+  <div class="coast-deco coast-deco--tl" aria-hidden="true">
+    <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+      <path class="blob" d="M48 118c34-48 98-58 142-22 38 32 32 92-12 118-48 28-108 12-138-38-18-28-14-42 8-58z"/>
+      <path class="flow flow--light" d="M18 198c58-28 108 12 158-22 38-26 72-8 98 18"/>
+      <path class="sprig" d="M88 248v-92M88 228c18 12 32 4 42-12M88 198c22-6 38-22 48-38M88 168c16-18 28-34 36-52"/>
+      <use href="#coast-palm" transform="translate(198 6) rotate(24) scale(0.88)"/>
+      <use href="#coast-palm-curve" transform="translate(6 198) rotate(-142) scale(0.78)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="idx">02</span>
+      <h2 data-i18n="s02-h2">One room, changing shape as the day goes on</h2>
+    </header>
+    <p class="lead" data-i18n="s02-lead">The idea is not a café with food added as an afterthought, nor a restaurant that happens to serve coffee in the morning. It is a single kitchen working to one standard, doing more or less elaborate things depending on the hour and the month.</p>
+
+    <p data-i18n="s02-p1">The higher spend comes from the quality of what goes into the food, never from putting on a different sort of service in the evening. The same chefs, the same suppliers and the same sensibility carry from the first coffee to the last plate, so that somebody who eats lunch there on a Tuesday in February recognises the kitchen when they come back for dinner in July.</p>
+
+    <div class="seasons">
+      <div class="season">
+        <div class="season-photo">
+          <img class="grade" src="images/terrace.jpg" alt="" width="900" height="600" loading="lazy">
+        </div>
+        <div class="season-body">
+          <div class="when"><svg class="mark-ico"><use href="#i-sun"/></svg><span data-i18n="s02-when-summer">June to September, 120 days</span></div>
+          <h3 data-i18n="s02-summer-h3">The full house</h3>
+          <p data-i18n="s02-summer-p">Coffee and pastry from early. Lunch with the terrace at capacity. Aperitivo running into dinner, with the full brigade and a second service. This is where most of the year's revenue is made, and the room is built to take it.</p>
+        </div>
+      </div>
+      <div class="season">
+        <div class="season-photo">
+          <img class="grade" src="images/cafe.jpg" alt="" width="900" height="600" loading="lazy">
+        </div>
+        <div class="season-body">
+          <div class="when"><svg class="mark-ico"><use href="#i-moon"/></svg><span data-i18n="s02-when-winter">October to May, 210 days</span></div>
+          <h3 data-i18n="s02-winter-h3">The core rhythm</h3>
+          <p data-i18n="s02-winter-p">Coffee and pastry from early, lunch service, and the door closes after it. A core team, no evening cover, and a business that runs on residents, students and people who work nearby rather than on visitors.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="passage">
+      <p data-i18n="s02-passage">Flexing the day by season rather than trading the same hours all year is what makes the economics work. An evening brigade only goes on the payroll in the months when there are people to feed, and the weekday lunch trade carries the quieter part of the year on its own. The result is roughly €927,000 of revenue at around 16% EBE, which is better than either a lunch-only operation running all year or a full dinner operation doing the same.</p>
+    </div>
+  </div>
+</section>
+
+<section class="linen" id="economics">
+  <div class="coast-deco coast-deco--tr" aria-hidden="true">
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <path class="flow" d="M24 228c48-58 108-38 158-88 32-34 72-28 108-8"/>
+      <path class="flow flow--light" d="M44 258c62-42 108-12 148-52"/>
+      <path class="sprig" d="M228 42v78M228 62c-16-12-32-4-42 10M228 82c-20 2-34 16-44 30"/>
+      <use href="#coast-palm" transform="translate(188 8) rotate(14) scale(0.85)"/>
+      <use href="#coast-palm-curve" transform="translate(12 188) rotate(-118) scale(0.72)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="idx">03</span>
+      <h2 data-i18n="s03-h2">The economics, measured against real Nice accounts</h2>
+    </header>
+    <p class="lead" data-i18n="s03-lead">The model assumes 120 peak days at around 220 transactions on a blended ticket of €22, and 210 quieter days at 110 transactions on €15. It is drawn for a room of roughly 100 to 120 square metres, with about 40 covers inside and 20 on the terrace.</p>
+
+    <div class="scroll">
+      <table>
+        <tr><th data-i18n="s03-th-line">Line</th><th class="fig" data-i18n="s03-th-share">Share</th><th class="fig" data-i18n="s03-th-euro">Euro</th></tr>
+        <tr><td data-i18n="s03-r1">Revenue, peak season</td><td class="fig">63%</td><td class="fig">580,800</td></tr>
+        <tr><td data-i18n="s03-r2">Revenue, off-peak</td><td class="fig">37%</td><td class="fig">346,500</td></tr>
+        <tr><td data-i18n="s03-r3">Food and beverage</td><td class="fig">28%</td><td class="fig">(260,000)</td></tr>
+        <tr><td data-i18n="s03-r4">Payroll, fully loaded</td><td class="fig">40%</td><td class="fig">(371,000)</td></tr>
+        <tr><td data-i18n="s03-r5">Rent</td><td class="fig">4.2%</td><td class="fig">(38,500)</td></tr>
+        <tr><td data-i18n="s03-r6">Other charges</td><td class="fig">12%</td><td class="fig">(111,000)</td></tr>
+        <tr class="sum"><td>EBE</td><td class="fig">16%</td><td class="fig">146,800</td></tr>
+      </table>
+    </div>
+    <p class="fnote" data-i18n="s03-fnote">A trading restaurant of 120 covers in the Carré d'Or currently runs at 15% EBE on around €830,000 of revenue, so the model sits a little above a proven local comparable rather than far beyond one.</p>
+
+    <h3 data-i18n="s03-h3-rent">The rent test</h3>
+    <p data-i18n="s03-p-rent">Daniel's rule is that a single good trading day ought to cover a month's rent, and it is a sound piece of discipline because it quietly enforces a rent burden of around five per cent of revenue. On a site at €2,019 a month, one peak day at a €22 ticket needs 92 transactions to clear it, which a busy terrace does before the middle of the afternoon. Across a whole season the site covers its annual rent many times over.</p>
+
+    <div class="numbers">
+      <div class="num-item"><span class="v">28%</span><span class="k" data-i18n="s03-n1">Food and beverage cost, in line with the sector</span></div>
+      <div class="num-item"><span class="v">40%</span><span class="k" data-i18n="s03-n2">Payroll, inside the healthy band of 35 to 45%</span></div>
+      <div class="num-item"><span class="v">4.2%</span><span class="k" data-i18n="s03-n3">Rent burden, comfortably under the usual 8 to 10%</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="clay" id="customers">
+  <div class="coast-deco coast-deco--bl" aria-hidden="true">
+    <svg viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg">
+      <path class="blob" d="M62 198c28-62 98-78 148-38 42 34 38 98-8 128-52 34-118 18-148-38-12-22-8-38 8-52z"/>
+      <path class="flow" d="M38 88c72 28 118 88 178 58"/>
+      <path class="sprig" d="M118 268v-84M118 248c20 10 36 2 48-14M118 218c24-4 40-20 52-36"/>
+      <use href="#coast-palm" transform="translate(228 18) rotate(28) scale(0.9)"/>
+      <use href="#coast-palm-curve" transform="translate(8 218) rotate(-132) scale(0.8)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="idx">04</span>
+      <h2 data-i18n="s04-h2">Where the customers come from</h2>
+    </header>
+    <p class="lead" data-i18n="s04-lead">The strongest sites in Nice draw on more than one kind of customer, which is what allows them to trade in February as well as August. Visitors carry the summer, offices and the university carry the weekdays, and the people who live nearby build the habit that holds the rest of it together.</p>
+
+    <div class="engines">
+      <div class="engine">
+        <div class="engine-top"><svg class="mark-ico"><use href="#i-wave"/></svg><h3 data-i18n="s04-visitors-h3">Visitors</h3></div>
+        <div class="count" data-i18n="s04-visitors-count">15.23 million airport passengers, over 12 million tourists</div>
+        <p data-i18n="s04-visitors-p">More than half arrive from outside France, a higher share than before the pandemic, and those arriving by air spend upwards of €110 a day. Hotel occupancy reaches 85% between June and September.</p>
+      </div>
+      <div class="engine">
+        <div class="engine-top"><svg class="mark-ico"><use href="#i-book"/></svg><h3 data-i18n="s04-students-h3">Students</h3></div>
+        <div class="count" data-i18n="s04-students-count">More than 30,000 students and 3,000 staff</div>
+        <p data-i18n="s04-students-p">Université Côte d'Azur runs five of its six main campuses in Nice. Valrose is among the best situated university campuses in France, sitting on the tram and a few minutes from Gare Nice-Ville.</p>
+      </div>
+      <div class="engine">
+        <div class="engine-top"><svg class="mark-ico"><use href="#i-building"/></svg><h3 data-i18n="s04-offices-h3">Offices</h3></div>
+        <div class="count" data-i18n="s04-offices-count">22,000 jobs planned at Grand Arénas, 100,000 square metres at Nice La Plaine</div>
+        <p data-i18n="s04-offices-p">The largest business district in the Alpes-Maritimes sits to the west, and the centre itself is thick with law firms, consultancies and medical practices working at street level.</p>
+      </div>
+      <div class="engine">
+        <div class="engine-top"><svg class="mark-ico"><use href="#i-home"/></svg><h3 data-i18n="s04-residents-h3">Residents</h3></div>
+        <div class="count" data-i18n="s04-residents-count">Libération 12,289, Gambetta 9,400, Jean-Médecin 6,536, Carré d'Or 5,096</div>
+        <p data-i18n="s04-residents-p">Libération sits above the national average on income and below it on unemployment, while in the Carré d'Or well over half of working residents are managers or professionals.</p>
+      </div>
+    </div>
+
+    <div class="passage">
+      <p data-i18n="s04-passage">The bar is lower than it sounds. In the quieter months the model needs around 150 transactions a day, which at a fifteen in a thousand capture rate means ten thousand people walking past, an ordinary figure for a central Nice street during trading hours. Building the local habit needs roughly 3.4% of Libération's residents, or 8.2% of the Carré d'Or's, to come once or twice a week.</p>
+    </div>
+  </div>
+</section>
+
+<section class="deep" id="found">
+  <div class="coast-deco coast-deco--tr" aria-hidden="true">
+    <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+      <path class="blob" d="M188 38c58 12 98 62 82 118-14 48-62 82-112 68-58-16-88-78-58-128 18-30 52-52 88-58z"/>
+      <path class="flow flow--light" d="M32 248c58-48 108-18 158-58 42-34 88-22 122 2"/>
+      <path class="sprig" d="M248 68v82M248 88c-18-10-34 2-44 16M248 108c-22 4-36 20-48 34"/>
+      <use href="#coast-palm" transform="translate(208 6) rotate(20) scale(0.94)"/>
+      <use href="#coast-palm-curve" transform="translate(10 210) rotate(-124) scale(0.86)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="idx">05</span>
+      <h2 data-i18n="s05-h2">Being found</h2>
+    </header>
+    <p class="lead" data-i18n="s05-lead">Almost everybody who visits Nice, and a good half of the people who live there, will at some point type a version of the same question into a phone. Most operators treat that as something to worry about once the doors are open. It seems more sensible to choose the questions we intend to answer before we choose the menu.</p>
+
+    <div class="tiers">
+    <div class="tier">
+      <div class="cap" data-i18n="s05-cap1">Closed for good</div>
+      <div class="qline"><span class="ask" data-i18n="s05-q1a">Best socca in Nice</span><span class="who" data-i18n="s05-q1w">Chez Pipo since 1923, Chez Theresa since 1925</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q2a">Best ice cream in Nice</span><span class="who" data-i18n="s05-q2w">Fenocchio, Place Rossetti, since 1966</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q3a">Best Niçoise cooking</span><span class="who" data-i18n="s05-q3w">La Merenda, Le Safari</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q4a">Best seafood brasserie</span><span class="who" data-i18n="s05-q4w">Café du Turin</span></div>
+    </div>
+
+    <div class="tier">
+      <div class="cap" data-i18n="s05-cap2">Modern, and already taken</div>
+      <div class="qline"><span class="ask" data-i18n="s05-q5a">Best burger in Nice</span><span class="who" data-i18n="s05-q5w">Bubu, Le Bavastro</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q6a">Best brunch in Nice</span><span class="who" data-i18n="s05-q6w">Café Marché, Popote d'Ondine</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q7a">Best natural wine bar</span><span class="who" data-i18n="s05-q7w">La Cave Du Cours, La Part des Anges</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q8a">Best pizza in Nice</span><span class="who" data-i18n="s05-q8w">Pizza Pili, Le Safari</span></div>
+    </div>
+
+    <div class="tier is-open">
+      <div class="cap" data-i18n="s05-cap3">Genuinely open</div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q9a">Best coffee in Nice</span><span class="who" data-i18n="s05-q9w">No settled answer</span></div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q10a">Best breakfast in Nice</span><span class="who" data-i18n="s05-q10w">Every guide disagrees</span></div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q11a">Best place to work in Nice</span><span class="who" data-i18n="s05-q11w">Barely written about</span></div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q12a">Best iced coffee in Nice</span><span class="who" data-i18n="s05-q12w">Nobody has claimed it</span></div>
+    </div>
+    </div>
+
+    <p data-i18n="s05-p1">Breakfast is the most interesting of the four. Every guide to the city names a different set of places, and one or two resort to inventing sub-categories because no single address commands the answer. It is worth separating from brunch, which is thoroughly taken. Brunch is a weekend occasion, whereas breakfast is a weekday habit, and it is habit that keeps a room full through the winter.</p>
+
+    <p data-i18n="s05-p2">Working from a café barely exists as Nice writing at all, while Paris supports several dedicated guides to the subject, and Nice has thirty thousand students and a growing office population who need somewhere to sit. Iced coffee has no Nice answer whatsoever, in a city that is warm for five months of the year.</p>
+
+    <p class="quote" data-i18n="s05-quote">Nobody out-heritages Nice, but there is a good deal of room to be more modern than it currently is.</p>
+
+    <p data-i18n="s05-p3">All four of those questions are answered by the same room, in the same hours, with the same product. Coffee is the front door, breakfast is the reason to return tomorrow, working is the reason to stay two hours, and iced coffee is the thing that leaves the building in somebody's hand. Every one of them fills the lunch tables.</p>
+
+    <h3 data-i18n="s05-h3">How they get won</h3>
+    <p data-i18n="s05-p4">Local ranking runs on how recently and how consistently people have written about a place, and on details that can be verified rather than asserted. That makes it a matter of running the business well rather than of marketing it hard. Naming the roaster and the origin, and being straightforward about who is making the coffee, gives people something concrete to repeat. A deliberate programme of asking for reviews in the first ninety days, built into how the room is run rather than bolted on afterwards, does most of the rest. Recognition does more than either, because somebody who is greeted by name and handed their usual will write about it, and a well served stranger usually will not.</p>
+
+    <div class="passage">
+      <p data-i18n="s05-passage">There is also an advantage in simply staying open. A great many independent places in Nice close or cut back hard through the winter, and their standing in local search weakens a little every year as a result. A business whose weekday trade comes from residents, students and nearby offices can keep going through the quiet months on its own demand, and the gap widens slightly with every season.</p>
+    </div>
+  </div>
+</section>
+
+<section id="welcome">
+  <div class="coast-deco coast-deco--br" aria-hidden="true">
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <path class="flow" d="M22 242c54-42 104-12 154-52 38-28 78-18 112 6"/>
+      <path class="flow flow--light" d="M42 272c68-32 118-2 158-38"/>
+      <path class="sprig" d="M242 88v72M242 108c-16-10-30 0-40 14M242 128c-18 2-30 14-40 26"/>
+      <use href="#coast-palm" transform="translate(198 10) rotate(16) scale(0.88)"/>
+      <use href="#coast-palm-curve" transform="translate(14 198) rotate(-116) scale(0.76)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="idx">06</span>
+      <h2 data-i18n="s06-h2">The room and the welcome</h2>
+    </header>
+    <p class="lead" data-i18n="s06-lead">Mexican food is already served in Nice and there is no need to add to it. What the city is short of is not a cuisine but a manner of looking after people, and that is the thing this group actually has to bring.</p>
+
+    <p data-i18n="s06-p1">The published complaint about coffee in Nice is that it is expensive and unremarkable, which is as much a judgement about how customers are treated as about what is in the cup. Latin American hospitality is warmer by habit than French café convention tends to be, it cannot be copied by the place two doors down, and it costs nothing in service time. Everything else that makes the room distinctive has to sit alongside the transaction rather than inside it, because anything that slows the counter down works against the format.</p>
+
+    <figure class="band">
+      <img class="grade" src="images/terrace.jpg" alt="" width="1200" height="800" loading="lazy">
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <h3 data-i18n="s06-s1-h3">A second counter for regulars</h3>
+        <p data-i18n="s06-s1-p">Somewhere for standing orders and familiar faces to be handed a coffee without queueing behind a visitor still reading the menu. It serves the locals properly, and it has the useful side effect of showing every visitor that the place is genuinely somebody's local rather than a room arranged for tourists.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="s06-s2-h3">Something to take away</h3>
+        <p data-i18n="s06-s2-p">Canned cold brew and bottled filter from a fridge by the door. Full price, no time at the machine, the best margin in the building, and the name travels out into the city in somebody's hand. Sold in returnable glass, every one of them carries a small reason to come back.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="s06-s3-h3">A short menu, properly done</h3>
+        <p data-i18n="s06-s3-p">Restraint reads as confidence, and it is faster to cook, quicker to order from and less wasteful besides. In a market whose complaint is that things are unremarkable, six dishes done beautifully will beat twenty done adequately.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="s06-s4-h3">The terrace treated as the main room</h3>
+        <p data-i18n="s06-s4-p">Most places treat the terrace as spillover. It is worth treating it as the point: shade, comfortable chairs and an hour of sitting without being moved on. The counter earns its money on speed and the terrace earns its money on the time people are willing to spend there.</p>
+      </div>
+    </div>
+
+    <div class="passage">
+      <p data-i18n="s06-passage">The thing that compounds over time is recognition. Knowing somebody's order, their name and what happened to them last week costs nothing, cannot be bought by a competitor and is the actual reason a person comes four times a week rather than twice a month. The difficulty is that it usually lives in one barista's memory and leaves when they do, so it needs building into how the room is run: named tabs, a note of the usual order, and a handover between shifts that covers people rather than only stock.</p>
+    </div>
+  </div>
+</section>
+
+<section class="quiet" id="costs">
+  <div class="coast-deco coast-deco--tr" aria-hidden="true">
+    <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+      <path class="ripple" d="M18 208c48-38 98-18 148-48"/>
+      <path class="ripple" d="M28 224c48-38 98-18 148-48"/>
+      <path class="flow" d="M32 238c54-32 104-8 148-38"/>
+      <path class="sprig" d="M218 52v64M218 72c-14-8-26 2-34 12"/>
+      <use href="#coast-palm" transform="translate(178 6) rotate(22) scale(0.82)"/>
+      <use href="#coast-palm-curve" transform="translate(8 178) rotate(-112) scale(0.7)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="idx">07</span>
+      <h2 data-i18n="s07-h2">What it costs, and what it becomes</h2>
+    </header>
+    <p class="lead" data-i18n="s07-lead">The whole thing opens for €180,000, and that assumes buying a site with a working kitchen and extraction already installed rather than fitting out an empty shell. The discipline lies mostly in what we decline to overspend on.</p>
+
+    <div class="scroll">
+      <table>
+        <tr><th data-i18n="s07-th-line">Line</th><th class="fig" data-i18n="s07-th-euro">Euro</th><th data-i18n="s07-th-lean">How it stays lean</th></tr>
+        <tr><td data-i18n="s07-r1">Droit au bail or fonds</td><td class="fig">70,000</td><td data-i18n="s07-r1d">Kitchen and extraction already in place. Carré d'Or units start around €50,000.</td></tr>
+        <tr><td data-i18n="s07-r2">Deposit</td><td class="fig">6,000</td><td data-i18n="s07-r2d">Three months, returnable at the end of the lease.</td></tr>
+        <tr><td data-i18n="s07-r3">Refresh works</td><td class="fig">12,000</td><td data-i18n="s07-r3d">A refresh rather than a fit-out, managed directly without a contractor's margin.</td></tr>
+        <tr><td data-i18n="s07-r4">Coffee equipment</td><td class="fig">16,000</td><td data-i18n="s07-r4d">Leased or supplied through a roaster relationship rather than bought outright.</td></tr>
+        <tr><td data-i18n="s07-r5">Legal and notary</td><td class="fig">5,000</td><td></td></tr>
+        <tr><td data-i18n="s07-r6">Licence</td><td class="fig">1,500</td><td data-i18n="s07-r6d">A restaurant licence at opening. Licence IV waits until the evenings justify it.</td></tr>
+        <tr><td data-i18n="s07-r7">Brand, signage and launch</td><td class="fig">4,500</td><td data-i18n="s07-r7d">Built inside the group rather than bought from an agency.</td></tr>
+        <tr><td data-i18n="s07-r8">Working capital</td><td class="fig">65,000</td><td data-i18n="s07-r8d">Three months. Opening in spring means reaching the season before the runway thins.</td></tr>
+        <tr class="sum"><td data-i18n="s07-total">Total</td><td class="fig">180,000</td><td></td></tr>
+      </table>
+    </div>
+
+    <div class="numbers">
+      <div class="num-item"><span class="v">€180k</span><span class="k" data-i18n="s07-n1">All in, to open the doors</span></div>
+      <div class="num-item"><span class="v" data-i18n="s07-n2v">18 to 24 months</span><span class="k" data-i18n="s07-n2">Before the trading rhythm settles</span></div>
+      <div class="num-item"><span class="v">€540k to €1.35m</span><span class="k" data-i18n="s07-n3">Indicative value of the fonds at maturity</span></div>
+    </div>
+
+    <div class="passage">
+      <p data-i18n="s07-passage">One line is not worth trimming. Restaurant budgets rarely come apart on the large numbers; they come apart on the ones nobody counted. Three months of working capital alongside a spring opening is careful. Two months would not be, and no saving found elsewhere would be worth the risk of it.</p>
+    </div>
+
+    <p class="spaced" data-i18n="s07-p1">Fonds de commerce in France change hands at somewhere between 60 and 150 per cent of average annual revenue. A business settled at €900,000 is therefore worth between €540,000 and €1.35 million as something that can be sold, and that value grows with every year of trading history, every review and every bit of ground held in local search.</p>
+
+    <p data-i18n="s07-p2">Beyond the single room, this would be the group's first address in Europe. A Nice business that works becomes a template, a set of supplier relationships, a French operating structure and a credential in a market that takes hospitality seriously. Casa Kinta took Grupo Marea from one restaurant to a portfolio. This would take the portfolio across an ocean.</p>
+
+    <p data-i18n="s07-p3">The early years pay in what the business is worth rather than in what it distributes, which is normal for hospitality and is the right trade when the asset appreciates alongside its reputation.</p>
+  </div>
+</section>
+
+<section class="close" id="decision">
+  <div class="coast-deco coast-deco--tl" aria-hidden="true">
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <path class="blob" d="M42 128c38-52 108-62 148-18 36 40 28 102-18 128-50 26-112 8-138-48-10-22-4-42 8-62z"/>
+      <path class="flow" d="M28 218c62-38 112 8 162-32"/>
+      <path class="flow flow--light" d="M48 248c72-28 122 2 168-28"/>
+      <use href="#coast-palm" transform="translate(188 8) rotate(26) scale(0.86)"/>
+      <use href="#coast-palm-curve" transform="translate(12 188) rotate(-136) scale(0.74)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="idx">08</span>
+      <h2 data-i18n="s08-h2">What would turn this into a decision</h2>
+    </header>
+    <p class="lead" data-i18n="s08-lead">Four things, none of them expensive, and between them they close the remaining unknowns.</p>
+
+    <div class="steps">
+      <div class="step">
+        <h3 data-i18n="s08-s1-h3">Counting the street</h3>
+        <p data-i18n="s08-s1-p">An hour at eight, an hour at one and an hour at seven, on a Tuesday and again on a Saturday, in three parts of the city with different characters. Two days of somebody's time, and the last real unknown in the model is closed.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="s08-s2-h3">Ticket and throughput from the kitchen</h3>
+        <p data-i18n="s08-s2-p">Real numbers from Daniel and Rodrigo for the coffee and lunch format, replacing sector averages with what the two of them already know from running rooms.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="s08-s3-h3">A shortlist held against the rent rule</h3>
+        <p data-i18n="s08-s3-p">A working kitchen, extraction already installed, a terrace, and a monthly rent that a single good day clears. Anything that fails that test comes off the list regardless of how the frontage looks.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="s08-s4-h3">Opening in April or May</h3>
+        <p data-i18n="s08-s4-p">A spring opening buys a full first season in which to build cash, reputation and reviews before meeting the first winter. It is worth more than the difference between two good properties.</p>
+      </div>
+    </div>
+
+    <p class="quote closing" data-i18n="s08-quote">Nice has the visitors, the students, the offices and the money. What it lacks is somewhere everyone agrees on for a coffee, for breakfast, or for sitting down to work, and one room could answer all three.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="coast-deco coast-deco--br" aria-hidden="true">
+    <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+      <path class="flow" d="M18 198c52-28 102 8 152-28"/>
+      <path class="ripple" d="M28 214c52-28 102 8 152-28"/>
+      <path class="ripple" d="M38 230c52-28 102 8 152-28"/>
+      <use href="#coast-palm" transform="translate(158 4) rotate(12) scale(0.78)"/>
+      <use href="#coast-palm-curve" transform="translate(6 168) rotate(-122) scale(0.68)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <p data-i18n="footer">Grupo Marea, September 2026. Figures are planning estimates drawn from French sector data and from disclosed Nice trading accounts.</p>
+  </div>
+</footer>
+
+<script src="nice-i18n.js"></script>
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.rail a'));
+  var ids = links.map(function(a){ return a.getAttribute('href').slice(1); });
+  var sections = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+
+  function setCurrent(id){
+    links.forEach(function(a){
+      if(a.getAttribute('href') === '#' + id) a.setAttribute('aria-current','true');
+      else a.removeAttribute('aria-current');
+    });
+    document.body.classList.toggle('dusk-nav', id === 'found');
+  }
+
+  function onScroll(){
+    var y = window.scrollY + window.innerHeight * 0.38;
+    var current = ids[0];
+    for(var i=0;i<sections.length;i++){
+      if(sections[i].offsetTop <= y) current = ids[i];
+    }
+    setCurrent(current);
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
