@@ -15,7 +15,7 @@
   'nav-decided': 'Lo que Niza ya decidió',
   'hero-kicker': 'Una cafetería en Niza',
   'hero-h1': '¡Di <strong>Koukou</strong> al mejor café de Niza!',
-  'hero-opening': 'Una de las ciudades más activas de Europa, treinta mil estudiantes, un distrito de negocios que crece hacia el oeste, y una oferta de café y almuerzo que las guías describen con educada moderación. Doce millones de visitantes solo tienen que encontrarnos una vez. El barrio nos encontrará cada semana. Abrimos temprano con el café, nos ganamos el sustento al mediodía y mantenemos la terraza hasta las largas noches de verano.',
+  'hero-opening': 'Una de las ciudades más activas de Europa, treinta mil estudiantes, un distrito de negocios que crece hacia el oeste, y una oferta de café y almuerzo que las guías describen con educada moderación. Doce millones de visitantes solo tienen que encontrarnos una vez. El barrio nos encontrará cada semana. KouKou abre temprano con el café, se gana el sustento al mediodía y mantiene la terraza hasta las largas noches de verano.',
   'hero-byline': 'Preparado para Daniel Burgos, Kris Wallenta y Andre, Grupo Marea.<br>Septiembre de 2026. Nombre por acordar.',
   'sum-1': 'El café es la única categoría en Niza que nadie posee',
   'sum-2': 'Doce millones de visitantes al año, treinta mil estudiantes, una población de oficinas en crecimiento',
