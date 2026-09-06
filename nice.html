@@ -290,11 +290,6 @@
   header.hero .opening{
     font-size:1.12rem;color:var(--ink-soft);max-width:52ch;line-height:1.7;
   }
-  .byline{
-    margin-top:72px;padding-top:22px;border-top:1px solid var(--rule);
-    font-family:'Outfit',system-ui,sans-serif;font-size:0.78rem;
-    letter-spacing:0.04em;color:var(--ink-faint);line-height:1.75;max-width:46ch;
-  }
 
   /*
     Chapter grounds — each chapter is a different room.
@@ -945,13 +940,18 @@
     color:var(--ink);
     font-size:1.02rem;
     line-height:1.65;
+    text-align:left;
+  }
+  .read-mode p{
+    margin:0 0 0.85rem;
+    max-width:46ch;
   }
   .read-mode .read-all{
     appearance:none;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    margin:0.35rem 0 0;
+    margin:0;
     padding:0.7rem 1.15rem;
     min-height:44px;
     border:1px solid var(--terracotta-deep);
@@ -1156,11 +1156,7 @@
   <div class="wrap">
     <p class="kicker" data-i18n="hero-kicker">A coffee house in Nice</p>
     <h1 data-i18n="hero-h1" data-i18n-html>Say <strong>Koukou</strong> to Nice's best coffee!</h1>
-    <p class="opening" data-i18n="hero-opening">One of the busiest cities in Europe, thirty thousand students, a business district growing to the west, and a coffee and lunch offer that guidebooks politely describe as underwhelming. Twelve million visitors only need to find us once. The neighbourhood will find us every week. KouKou opens early on coffee, earns our keep at lunch, and holds the terrace through the long summer evenings.</p>
-    <div class="byline" data-i18n="hero-byline" data-i18n-html>
-      Prepared for Daniel Burgos, Kris Wallenta and Andre, Grupo Marea.<br>
-      September 2026. Name to be agreed.
-    </div>
+    <p class="opening" data-i18n="hero-opening">One of the busiest cities in Europe, thirty thousand students, a business district growing to the west, and a coffee and lunch offer that guidebooks politely describe as underwhelming. Twelve million visitors only need to find Koukou once. The neighbourhood will find Koukou every week. Koukou opens early on coffee, earns its keep at lunch, and holds the terrace through the long summer evenings.</p>
   </div>
 </header>
 
@@ -1178,7 +1174,10 @@
 </div>
 
 <div class="wrap" id="read-mode-wrap">
-  <p class="read-mode"><span data-i18n="read-mode-text">Read the short version, or open the detail on any section. </span><button type="button" class="read-all" data-i18n="read-all-open" aria-expanded="false">Open everything</button></p>
+  <div class="read-mode">
+    <p data-i18n="read-mode-text">Read the short version, or open the detail on any section.</p>
+    <button type="button" class="read-all" data-i18n="read-all-open" aria-expanded="false">Open everything</button>
+  </div>
 </div>
 
 <section class="pale" id="decided">
@@ -1339,7 +1338,7 @@
         <span class="more-open" data-i18n="s02-more">Why this is the whole plan</span><span class="more-close" data-i18n="more-close">Close</span>
       </summary>
       <div class="more-panel"><div class="more-inner">
-        <p data-i18n="s02-p1">From October to May the menu is cold and assembled. Sandwiches on good bread, pastry from a boulangerie we choose carefully, coffee we take seriously. None of it is cooked, which means none of it needs a chef. Three people run the place. From June to September the kitchen switches on, a chef and a commis arrive, the plates get more ambitious and the terrace runs until late.</p>
+        <p data-i18n="s02-p1">From October to May the menu is cold and assembled. Sandwiches on good bread, pastry from a boulangerie Koukou chooses carefully, coffee Koukou takes seriously. None of it is cooked, which means none of it needs a chef. Three people run the place. From June to September the kitchen switches on, a chef and a commis arrive, the plates get more ambitious and the terrace runs until late.</p>
         <p data-i18n="s02-p2">The cold layer does not disappear in summer. It carries breakfast and the quick half of lunch when two hundred and twenty people a day are coming through, which is precisely when you want half your covers leaving the counter rather than the pass.</p>
         <div class="passage">
       <p data-i18n="s02-passage">Carrying a kitchen and a chef through eight quiet months is what makes most all-day operations marginal. Not carrying them is worth roughly a hundred thousand euro a year, and it is the single largest decision in this plan.</p>
@@ -1363,7 +1362,7 @@
       <span class="idx">04</span>
       <h2 data-i18n="s03-h2">The economics, measured against real Nice accounts</h2>
     </header>
-    <p class="lead" data-i18n="s03-lead">€927,000 of revenue at 26% EBE, against 15% at a trading Carré d'Or restaurant of comparable size. The entire difference is the kitchen we are not staffing for eight months of the year.</p>
+    <p class="lead" data-i18n="s03-lead">€927,000 of revenue at 26% EBE, against 15% at a trading Carré d'Or restaurant of comparable size. The entire difference is the kitchen Koukou is not staffing for eight months of the year.</p>
 
     <div class="scroll">
       <table>
@@ -1395,7 +1394,7 @@
     </div>
         <p data-i18n="s03-payroll-p">Against €927,000 of revenue that is 24% payroll. The model below carries it at 28% for safety, which is still a long way below the 35 to 45% a conventional all-day operation runs at, because a conventional operation is paying a kitchen to stand still from October to May.</p>
         <p data-i18n="s03-redevance-note">The redevance replaces rent and sits a little above it, because it buys the use of a trading business rather than an empty set of walls. At four and a half per cent of revenue it is still well inside the discipline below.</p>
-        <p class="fnote" data-i18n="s03-fnote">A trading restaurant of 120 covers in the Carré d'Or currently runs at 15% EBE on around €830,000 of revenue. This model sits well above that, and the entire difference is the kitchen we are not staffing for eight months of the year.</p>
+        <p class="fnote" data-i18n="s03-fnote">A trading restaurant of 120 covers in the Carré d'Or currently runs at 15% EBE on around €830,000 of revenue. This model sits well above that, and the entire difference is the kitchen Koukou is not staffing for eight months of the year.</p>
         <h3 data-i18n="s03-h3-rent">The redevance test</h3>
         <p data-i18n="s03-p-rent">Daniel's rule is that a single good trading day ought to cover a month's occupancy cost. At a redevance of three thousand five hundred a month, one peak day at a twenty two euro ticket needs a hundred and sixty transactions to clear it, which a full terrace does by the middle of the afternoon. Across a whole season the site covers its annual redevance many times over, and the rule holds under the new structure exactly as it did under the old one.</p>
         <h3 data-i18n="s03-winter-h3">The winter stands on its own</h3>
@@ -1423,7 +1422,7 @@
       <span class="idx">05</span>
       <h2 data-i18n="s07-h2">Lease it first, own it later</h2>
     </header>
-    <p class="lead" data-i18n="s07-lead">€40,000 to start trading, against €180,000 to buy. We lease an existing business, run it under our own name for a year, and buy it in year three out of what it earns.</p>
+    <p class="lead" data-i18n="s07-lead">€40,000 to start trading, against €180,000 to buy. Koukou leases an existing business, runs it under its own name for a year, and buys it in year three out of what it earns.</p>
 
     <div class="steps phase-brief">
       <div class="step">
@@ -1441,10 +1440,10 @@
         <span class="more-open" data-i18n="s07-more">The structure and what it costs</span><span class="more-close" data-i18n="more-close">Close</span>
       </summary>
       <div class="more-panel"><div class="more-inner">
-        <p data-i18n="s07-lead-full">France has a structure built for exactly this. Under location-gérance you lease an existing fonds de commerce and operate it, paying the owner a monthly redevance instead of buying the business outright. The owner keeps the asset, we keep the trade, and the entry cost falls from a hundred and eighty thousand euro to about forty. The contract runs a year with tacit renewal, which means the decision to commit properly is made after twelve months of real trading rather than before a single day of it.</p>
-        <p data-i18n="s07-ph1-rest">Full operation from day one under our own name, our own standards and our own team. The contract is filed at the greffe and published in a journal of legal announcements, and the redevance carries VAT at twenty per cent. The purchase option matters more than the monthly figure, because a one-year term with tacit renewal is the structure's real weakness and the option is what closes it.</p>
-        <p data-i18n="s07-ph1-p2">The first year is the test, and it is a test conducted on a real business rather than a projection. If the numbers land, we buy. If they do not, the exposure is a deposit and some working capital rather than a hundred and eighty thousand euro of somebody else's fonds.</p>
-        <p data-i18n="s07-ph2-rest">We reach the same asset position as an acquisition would have given us, roughly a year later, having risked forty thousand euro rather than a hundred and eighty.</p>
+        <p data-i18n="s07-lead-full">France has a structure built for exactly this. Under location-gérance you lease an existing fonds de commerce and operate it, paying the owner a monthly redevance instead of buying the business outright. The owner keeps the asset, Koukou keeps the trade, and the entry cost falls from a hundred and eighty thousand euro to about forty. The contract runs a year with tacit renewal, which means the decision to commit properly is made after twelve months of real trading rather than before a single day of it.</p>
+        <p data-i18n="s07-ph1-rest">Full operation from day one under Koukou's own name, standards and team. The contract is filed at the greffe and published in a journal of legal announcements, and the redevance carries VAT at twenty per cent. The purchase option matters more than the monthly figure, because a one-year term with tacit renewal is the structure's real weakness and the option is what closes it.</p>
+        <p data-i18n="s07-ph1-p2">The first year is the test, and it is a test conducted on a real business rather than a projection. If the numbers land, Koukou buys. If they do not, the exposure is a deposit and some working capital rather than a hundred and eighty thousand euro of somebody else's fonds.</p>
+        <p data-i18n="s07-ph2-rest">Koukou reaches the same asset position as an acquisition would have given it, roughly a year later, having risked forty thousand euro rather than a hundred and eighty.</p>
         <div class="scroll">
       <table>
         <tr><th data-i18n="s07-th-line">Line</th><th class="fig" data-i18n="s07-th-euro">Euro</th><th data-i18n="s07-th-lean">Note</th></tr>
@@ -1464,17 +1463,17 @@
 
         <div class="passage">
 
-      <p data-i18n="s07-passage">Working capital is lower here than it would be on an acquisition, and that is a consequence of the structure rather than a saving we have chosen. Taking over a trading business means taking over its customers, so there is no ramp from zero and no dead months before the first euro. If the site is not already trading, the number goes back up and the argument for this route weakens considerably.</p>
+      <p data-i18n="s07-passage">Working capital is lower here than it would be on an acquisition, and that is a consequence of the structure rather than a saving Koukou has chosen. Taking over a trading business means taking over its customers, so there is no ramp from zero and no dead months before the first euro. If the site is not already trading, the number goes back up and the argument for this route weakens considerably.</p>
     </div>
-        <p class="spaced" data-i18n="s07-p1">The return here is not an asset we own on day one. It is the rate at which capital comes back. Forty thousand euro of entry against roughly two hundred and forty five thousand of annual EBE means the business repays its entire starting cost inside two months of settled trading. Everything after that is either distribution or the fund that buys the fonds in year three, at which point the asset arrives on the balance sheet having been paid for by the trade rather than by the partners.</p>
+        <p class="spaced" data-i18n="s07-p1">The return here is not an asset Koukou owns on day one. It is the rate at which capital comes back. Forty thousand euro of entry against roughly two hundred and forty five thousand of annual EBE means the business repays its entire starting cost inside two months of settled trading. Everything after that is either distribution or the fund that buys the fonds in year three, at which point the asset arrives on the balance sheet having been paid for by the trade rather than by the partners.</p>
         <p data-i18n="s07-p2">Beyond the single house, this would be the group's first address in Europe. A Nice business that works becomes a template, a set of supplier relationships, a French operating structure and a credential in a market that takes hospitality seriously. Casa Kinta took Grupo Marea from one restaurant to a portfolio. This would take the portfolio across an ocean.</p>
         <p data-i18n="s07-p3">The early years pay in the speed at which the money comes back rather than in the size of the asset, and the asset follows on behind. For a first venture in an unfamiliar market, that is the right order.</p>
       </div></div>
     </details>
 
     <div class="passage risk">
-      <h3 data-i18n="s05-risk-h3">What we are accepting</h3>
-      <p data-i18n="s05-risk-p">Five things are genuinely uncertain and worth stating plainly. An owner cannot grant location-gérance unless they have run the fonds for at least two years themselves, which disqualifies more sites than expected and has to be checked early on every candidate. The contract typically runs a year with tacit renewal, so without a purchase option written in from the start we improve a business somebody else can take back. The winter ticket is modelled at fifteen euro against roughly nine at comparable cold-menu operations elsewhere, and better sourcing has to carry that gap. Recruiting a chef for four months on the Côte d'Azur means hiring in the same weeks as every restaurant between Menton and Saint-Tropez. And through the first two years we hold no asset at all, which is the price of the lower entry and should be understood as a deliberate trade rather than an oversight.</p>
+      <h3 data-i18n="s05-risk-h3">What Koukou is accepting</h3>
+      <p data-i18n="s05-risk-p">Five things are genuinely uncertain and worth stating plainly. An owner cannot grant location-gérance unless they have run the fonds for at least two years themselves, which disqualifies more sites than expected and has to be checked early on every candidate. The contract typically runs a year with tacit renewal, so without a purchase option written in from the start Koukou improves a business somebody else can take back. The winter ticket is modelled at fifteen euro against roughly nine at comparable cold-menu operations elsewhere, and better sourcing has to carry that gap. Recruiting a chef for four months on the Côte d'Azur means hiring in the same weeks as every restaurant between Menton and Saint-Tropez. And through the first two years Koukou holds no asset at all, which is the price of the lower entry and should be understood as a deliberate trade rather than an oversight.</p>
     </div>
 
   </div>
@@ -1579,7 +1578,7 @@
     </details>
 
     <div class="journey-teaser">
-      <p data-i18n="s07-teaser">A visitor to Nice stays about three nights, which means they can plausibly come back three or four times in a single trip. We are not trying to win them for life, we are trying to become their place for that trip. There are twelve points between searching on a phone the night before and writing a review on the train home where that is won or lost, and none of them needs capital.</p>
+      <p data-i18n="s07-teaser">A visitor to Nice stays about three nights, which means they can plausibly come back three or four times in a single trip. Koukou is not trying to win them for life, Koukou is trying to become their place for that trip. There are twelve points between searching on a phone the night before and writing a review on the train home where that is won or lost, and none of them needs capital.</p>
       <p><a class="text-link" href="/journey" data-i18n="s07-teaser-link">Walk through the twelve stages</a></p>
     </div>
 
@@ -1606,7 +1605,7 @@
     <div class="steps">
       <div class="step">
         <h3 data-i18n="s08-s0-h3">Finding an owner who wants out but not out</h3>
-        <p data-i18n="s08-s0-p">Location-gérance is rarely advertised, because listing signals distress to staff and suppliers. It moves through agents. The approach is not to ask what is available, it is to explain that we own restaurants abroad, we are relocating to Nice, and we are looking for an owner who wants to keep their fonds and stop running it. That is a proposition an agent can take to a specific client they already have.</p>
+        <p data-i18n="s08-s0-p">Location-gérance is rarely advertised, because listing signals distress to staff and suppliers. It moves through agents. The approach is not to ask what is available, it is to explain that Koukou's partners own restaurants abroad, are relocating to Nice, and are looking for an owner who wants to keep their fonds and stop running it. That is a proposition an agent can take to a specific client they already have.</p>
       </div>
       <div class="step">
         <h3 data-i18n="s08-s1-h3">Counting the street</h3>
@@ -1846,7 +1845,7 @@
     btn.addEventListener('click', function(){
       var open = card.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.textContent = open ? 'Close' : 'What we do about it';
+      btn.textContent = open ? 'Close' : 'What Koukou does about it';
     });
   });
 
