@@ -1,6 +1,6 @@
 (function () {
   var ES = {
-  title: 'Niza, primero el arrendamiento',
+  title: 'Di hola a Koukou, tu nuevo local en Niza',
   'nav-sections': 'Secciones',
   'nav-opening': 'Apertura',
   'nav-city': 'La ciudad',
