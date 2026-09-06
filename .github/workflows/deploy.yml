@@ -1,31 +1,38 @@
 name: Deploy to Vercel
 
+# Preview and production deploys are handled by the Vercel GitHub app
+# (vercel[bot]). This workflow only verifies that a deployment was created
+# for the pushed commit. It does not call the Vercel CLI, so it does not
+# depend on VERCEL_TOKEN (which is currently invalid / rejected by the API).
 on:
   push:
   workflow_dispatch:
 
 permissions:
   contents: read
-  deployments: write
-  pull-requests: write
-  statuses: write
+  deployments: read
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v42.3.0
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-version: 59.11.7
-          # CLI mode: --prod is required for production. The typed `target`
-          # input only applies to experimental API mode, so main must pass
-          # --prod via vercel-args or production never updates.
-          vercel-args: ${{ github.ref == 'refs/heads/main' && '--prod' || '' }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-comment: false
+      - name: Wait for Vercel Git deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          echo "Waiting for a GitHub deployment on ${GITHUB_SHA}"
+          for i in $(seq 1 36); do
+            count=$(gh api "repos/${GITHUB_REPOSITORY}/deployments?sha=${GITHUB_SHA}&per_page=10" --jq 'length')
+            if [ "$count" -gt 0 ]; then
+              echo "Found ${count} deployment(s):"
+              gh api "repos/${GITHUB_REPOSITORY}/deployments?sha=${GITHUB_SHA}&per_page=10" \
+                --jq '.[] | "- \(.environment) by \(.creator.login) at \(.created_at)"'
+              exit 0
+            fi
+            echo "attempt ${i}/36: none yet, sleeping 10s"
+            sleep 10
+          done
+          echo "No Vercel deployment appeared for ${GITHUB_SHA} within ~6 minutes."
+          echo "Check that the Vercel GitHub integration is connected to this repository."
+          exit 1
