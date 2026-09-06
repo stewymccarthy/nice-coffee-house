@@ -207,19 +207,20 @@
 
   /* Mast */
   .mast{
-    position:fixed;top:0;left:0;right:0;z-index:50;
+    position:relative;z-index:50;
     display:flex;align-items:center;justify-content:space-between;
-    padding:18px 36px;pointer-events:none;
+    padding:18px 36px;
+    background:var(--sand);
   }
   .mast span{
     font-family:'Outfit',system-ui,sans-serif;
     font-size:0.64rem;letter-spacing:0.26em;text-transform:uppercase;
-    color:var(--stone);pointer-events:auto;
+    color:var(--stone);
   }
   .mast .mark{display:flex;align-items:center;gap:10px;color:var(--ink-soft);}
   .mast .mark .mark-ico{width:16px;height:16px;color:var(--terracotta);}
   .mast-end{
-    display:flex;align-items:center;gap:14px;pointer-events:auto;
+    display:flex;align-items:center;gap:14px;
   }
   .lang-toggle{
     font-family:'Outfit',system-ui,sans-serif;
@@ -240,9 +241,6 @@
   body.dusk-nav .lang-toggle[aria-pressed="true"]{
     background:var(--gold);border-color:var(--gold);color:var(--dusk);
   }
-  body.dusk-nav .mast span{color:rgba(243,235,224,0.62);}
-  body.dusk-nav .mast .mark{color:rgba(243,235,224,0.78);}
-  body.dusk-nav .mast .mark .mark-ico{color:var(--gold);}
 
   /* Rail */
   nav.rail{
@@ -1004,7 +1002,6 @@
   <span class="mark"><svg class="mark-ico"><use href="#i-cup"/></svg> Grupo Marea</span>
   <div class="mast-end">
     <button type="button" class="lang-toggle" id="lang-toggle" aria-pressed="false" aria-label="Switch to Spanish">ESP</button>
-    <span data-i18n="mast-date">September 2026</span>
   </div>
 </div>
 
