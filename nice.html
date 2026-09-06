@@ -937,6 +937,96 @@
     max-width:20ch;
   }
 
+
+  /* Disclosure reading mode */
+  .read-mode{
+    margin:1.5rem 0 0;
+    padding:0 0 0.25rem;
+    color:var(--ink);
+    font-size:1.02rem;
+    line-height:1.65;
+  }
+  .read-mode .read-all{
+    appearance:none;
+    background:none;
+    border:0;
+    padding:0.55rem 0;
+    margin:0;
+    font:inherit;
+    color:var(--terracotta-deep);
+    text-decoration:underline;
+    text-underline-offset:3px;
+    cursor:pointer;
+    min-height:44px;
+  }
+  .read-mode .read-all:hover{color:var(--terracotta);}
+
+  details.more{
+    margin-top:1.35rem;
+  }
+  details.more > summary{
+    list-style:none;
+    cursor:pointer;
+    color:var(--terracotta-deep);
+    text-decoration:underline;
+    text-underline-offset:3px;
+    font-family:inherit;
+    font-size:inherit;
+    line-height:1.65;
+    padding:0.55rem 0;
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+  }
+  details.more > summary::-webkit-details-marker{display:none;}
+  details.more > summary::marker{content:"";}
+  details.more > summary:hover{color:var(--terracotta);}
+  details.more .more-close{display:none;}
+  details.more[open] > summary .more-open{display:none;}
+  details.more[open] > summary .more-close{display:inline;}
+
+  details.more .more-panel{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows 0.35s ease;
+  }
+  details.more[open] .more-panel{
+    grid-template-rows:1fr;
+  }
+  details.more .more-inner{
+    overflow:hidden;
+  }
+  details.more[open] .more-inner{
+    padding-top:0.85rem;
+  }
+
+  .intervene-list{
+    list-style:none;
+    margin:1.75rem 0 0;
+    padding:0;
+    border-top:1px solid var(--rule);
+  }
+  .intervene-list li{
+    margin:0;
+    padding:0.95rem 0;
+    border-bottom:1px solid var(--rule-soft);
+    color:var(--ink);
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:1.28rem;
+    line-height:1.3;
+  }
+
+  .phase-brief .step > p + p{display:none;} /* safety unused */
+  .engine.brief p{display:none;}
+
+
+  .engine .count{margin-bottom:0;}
+  .season-body p:empty{display:none;}
+  .season.brief .season-body{padding-bottom:0.25rem;}
+  @media (prefers-reduced-motion:reduce){
+    details.more .more-panel{transition:none;}
+  }
+
 </style>
 </head>
 <body>
@@ -1060,6 +1150,10 @@
   </ul>
 </div>
 
+<div class="wrap" id="read-mode-wrap">
+  <p class="read-mode"><span data-i18n="read-mode-text">Read the short version, or open the detail on any section. </span><button type="button" class="read-all" data-i18n="read-all-open" aria-expanded="false">Open everything</button></p>
+</div>
+
 <section class="pale" id="decided">
   <div class="coast-deco coast-deco--br" aria-hidden="true">
     <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
@@ -1078,7 +1172,7 @@
       <span class="idx">01</span>
       <h2 data-i18n="s01-h2">What Nice has already decided</h2>
     </header>
-    <p class="lead" data-i18n="s01-lead">Nice guards its favourites carefully, and most of the categories worth having already belong to somebody. Knowing which ones are genuinely closed is the first useful thing to establish, because it saves a great deal of wasted effort later.</p>
+    <p class="lead" data-i18n="s01-lead">Nice guards its favourites carefully, and most of the categories worth having already belong to somebody. Coffee is the exception. The city has respected places but no single address that everyone names, in a category people search for every day.</p>
 
     <div class="tiers">
     <div class="tier">
@@ -1089,24 +1183,15 @@
       <div class="qline"><span class="ask" data-i18n="s05-q4a">Best seafood brasserie</span><span class="who" data-i18n="s05-q4w">Café du Turin</span></div>
     </div>
 
-    <div class="tier">
-      <div class="cap" data-i18n="s05-cap2">Modern, and already taken</div>
-      <div class="qline"><span class="ask" data-i18n="s05-q5a">Best burger in Nice</span><span class="who" data-i18n="s05-q5w">Bubu, Le Bavastro</span></div>
-      <div class="qline"><span class="ask" data-i18n="s05-q6a">Best brunch in Nice</span><span class="who" data-i18n="s05-q6w">Café Marché, Popote d'Ondine</span></div>
-      <div class="qline"><span class="ask" data-i18n="s05-q7a">Best natural wine bar</span><span class="who" data-i18n="s05-q7w">La Cave Du Cours, La Part des Anges</span></div>
-      <div class="qline"><span class="ask" data-i18n="s05-q8a">Best pizza in Nice</span><span class="who" data-i18n="s05-q8w">Pizza Pili, Le Safari</span></div>
-    </div>
-
-    <div class="tier is-open">
-      <div class="cap" data-i18n="s05-cap3">Genuinely open</div>
-      <div class="qline open"><span class="ask" data-i18n="s05-q9a">Best coffee in Nice</span><span class="who" data-i18n="s05-q9w">No settled answer</span></div>
-      <div class="qline open"><span class="ask" data-i18n="s05-q10a">Best breakfast in Nice</span><span class="who" data-i18n="s05-q10w">Every guide disagrees</span></div>
-      <div class="qline open"><span class="ask" data-i18n="s05-q11a">Best place to work in Nice</span><span class="who" data-i18n="s05-q11w">Barely written about</span></div>
-      <div class="qline open"><span class="ask" data-i18n="s05-q12a">Best iced coffee in Nice</span><span class="who" data-i18n="s05-q12w">Nobody has claimed it</span></div>
-    </div>
-    </div>
-
-    <p data-i18n="s01-close">Coffee sits differently. The city has respected places, Cafés Indien, HUG, French Coffee Shop and Canopée among them, but no single address that everyone names. One published review of a shop that Google itself labels as specialty calls it overpriced and unremarkable, and argues that coffee in Nice generally underdelivers for what it costs. That is a complaint sitting in public, in a category people already search for, with nobody answering it.</p>
+    <details class="more">
+      <summary>
+        <span class="more-open" data-i18n="s01-more">Why coffee and not the rest</span><span class="more-close" data-i18n="more-close">Close</span>
+      </summary>
+      <div class="more-panel"><div class="more-inner">
+        <p data-i18n="s01-lead-extra">Knowing which ones are genuinely closed is the first useful thing to establish, because it saves a great deal of wasted effort later.</p>
+        <p data-i18n="s01-close">Coffee sits differently. The city has respected places, Cafés Indien, HUG, French Coffee Shop and Canopée among them, but no single address that everyone names. One published review of a shop that Google itself labels as specialty calls it overpriced and unremarkable, and argues that coffee in Nice generally underdelivers for what it costs. That is a complaint sitting in public, in a category people already search for, with nobody answering it.</p>
+      </div></div>
+    </details>
   </div>
 </section>
 
@@ -1125,34 +1210,45 @@
       <span class="idx">02</span>
       <h2 data-i18n="s04-h2">Where the customers come from</h2>
     </header>
-    <p class="lead" data-i18n="s04-lead">The strongest sites in Nice draw on more than one kind of customer, which is what allows them to trade in February as well as August. Visitors carry the summer, offices and the university carry the weekdays, and the people who live nearby build the habit that holds the rest of it together.</p>
+    <p class="lead" data-i18n="s04-lead">The strongest sites in Nice draw on more than one kind of customer, which is what allows them to trade in February as well as August. Visitors carry the summer, offices and the university carry the weekdays, and the people who live nearby build the habit.</p>
 
     <div class="engines">
-      <div class="engine">
+      <div class="engine brief">
         <div class="engine-top"><svg class="mark-ico"><use href="#i-wave"/></svg><h3 data-i18n="s04-visitors-h3">Visitors</h3></div>
         <div class="count" data-i18n="s04-visitors-count">15.23 million airport passengers, over 12 million tourists</div>
-        <p data-i18n="s04-visitors-p">More than half arrive from outside France, a higher share than before the pandemic, and those arriving by air spend upwards of €110 a day. Hotel occupancy reaches 85% between June and September.</p>
       </div>
-      <div class="engine">
+      <div class="engine brief">
         <div class="engine-top"><svg class="mark-ico"><use href="#i-book"/></svg><h3 data-i18n="s04-students-h3">Students</h3></div>
         <div class="count" data-i18n="s04-students-count">More than 30,000 students and 3,000 staff</div>
-        <p data-i18n="s04-students-p">Université Côte d'Azur runs five of its six main campuses in Nice. Valrose is among the best situated university campuses in France, sitting on the tram and a few minutes from Gare Nice-Ville.</p>
       </div>
-      <div class="engine">
+      <div class="engine brief">
         <div class="engine-top"><svg class="mark-ico"><use href="#i-building"/></svg><h3 data-i18n="s04-offices-h3">Offices</h3></div>
         <div class="count" data-i18n="s04-offices-count">22,000 jobs planned at Grand Arénas, 100,000 square metres at Nice La Plaine</div>
-        <p data-i18n="s04-offices-p">The largest business district in the Alpes-Maritimes sits to the west, and the centre itself is thick with law firms, consultancies and medical practices working at street level.</p>
       </div>
-      <div class="engine">
+      <div class="engine brief">
         <div class="engine-top"><svg class="mark-ico"><use href="#i-home"/></svg><h3 data-i18n="s04-residents-h3">Residents</h3></div>
         <div class="count" data-i18n="s04-residents-count">Libération 12,289, Gambetta 9,400, Jean-Médecin 6,536, Carré d'Or 5,096</div>
-        <p data-i18n="s04-residents-p">Libération sits above the national average on income and below it on unemployment, while in the Carré d'Or well over half of working residents are managers or professionals.</p>
       </div>
     </div>
 
-    <div class="passage">
+    <details class="more">
+      <summary>
+        <span class="more-open" data-i18n="s04-more">The numbers behind each</span><span class="more-close" data-i18n="more-close">Close</span>
+      </summary>
+      <div class="more-panel"><div class="more-inner">
+        <h3 data-i18n="s04-visitors-h3">Visitors</h3>
+        <p data-i18n="s04-visitors-p">More than half arrive from outside France, a higher share than before the pandemic, and those arriving by air spend upwards of €110 a day. Hotel occupancy reaches 85% between June and September.</p>
+        <h3 data-i18n="s04-students-h3">Students</h3>
+        <p data-i18n="s04-students-p">Université Côte d'Azur runs five of its six main campuses in Nice. Valrose is among the best situated university campuses in France, sitting on the tram and a few minutes from Gare Nice-Ville.</p>
+        <h3 data-i18n="s04-offices-h3">Offices</h3>
+        <p data-i18n="s04-offices-p">The largest business district in the Alpes-Maritimes sits to the west, and the centre itself is thick with law firms, consultancies and medical practices working at street level.</p>
+        <h3 data-i18n="s04-residents-h3">Residents</h3>
+        <p data-i18n="s04-residents-p">Libération sits above the national average on income and below it on unemployment, while in the Carré d'Or well over half of working residents are managers or professionals.</p>
+        <div class="passage">
       <p data-i18n="s04-passage">The bar is lower than it sounds. Around a hundred and fifty transactions a day in the quieter months, which at a fifteen in a thousand capture rate means ten thousand people walking past, an ordinary figure for a central Nice street during trading hours. Building the local habit needs roughly 3.4% of Libération's residents, or 8.2% of the Carré d'Or's, to come once or twice a week.</p>
     </div>
+      </div></div>
+    </details>
   </div>
 </section>
 
@@ -1171,13 +1267,9 @@
       <span class="idx">03</span>
       <h2 data-i18n="s02-h2">Two businesses, one address</h2>
     </header>
-    <p class="lead" data-i18n="s02-lead">The winter operation and the summer operation are not the same business running at different volumes. They are different operations sharing a kitchen, a supplier list and a name, and separating them properly is what makes the economics work.</p>
+    <p class="lead" data-i18n="s02-lead">The winter operation and the summer operation are not the same business at different volumes. From October to May the menu is cold and assembled, which means no chef and three people. From June to September the kitchen opens, a chef and a commis arrive, and the terrace runs late.</p>
 
-    <p data-i18n="s02-p1">From October to May the menu is cold and assembled. Sandwiches on good bread, pastry from a boulangerie we choose carefully, coffee we take seriously. None of it is cooked, which means none of it needs a chef. Three people run the place. From June to September the kitchen switches on, a chef and a commis arrive, the plates get more ambitious and the terrace runs until late.</p>
-
-    <p data-i18n="s02-p2">The cold layer does not disappear in summer. It carries breakfast and the quick half of lunch when two hundred and twenty people a day are coming through, which is precisely when you want half your covers leaving the counter rather than the pass.</p>
-
-    <div class="seasons">
+    <div class="seasons seasons-brief">
       <div class="season">
         <div class="season-photo">
           <img class="grade" src="images/cafe.jpg" alt="" width="900" height="600" loading="lazy">
@@ -1185,7 +1277,7 @@
         <div class="season-body">
           <div class="when"><svg class="mark-ico"><use href="#i-moon"/></svg><span data-i18n="s02-when-winter">October to May, 210 days</span></div>
           <h3 data-i18n="s02-winter-h3">The cold house</h3>
-          <p data-i18n="s02-winter-p">A counter, a fridge, a press and a grinder. Sandwiches built on bought-in quality rather than technique, pastry from a boulangerie, and coffee that justifies the trip. Three people, no chef, no kitchen running. The quality sits in the sourcing, which is a thing you buy well rather than cook well, and Nice has the suppliers to buy from.</p>
+          
         </div>
       </div>
       <div class="season">
@@ -1195,14 +1287,28 @@
         <div class="season-body">
           <div class="when"><svg class="mark-ico"><use href="#i-sun"/></svg><span data-i18n="s02-when-summer">June to September, 120 days</span></div>
           <h3 data-i18n="s02-summer-h3">The full house</h3>
-          <p data-i18n="s02-summer-p">A chef and a commis arrive, four or five seasonal floor staff with them. The kitchen opens, twelve to fifteen cooked plates join the menu, and the terrace runs into the evening. The chef is not making sandwiches. The chef is making the difference between a fifteen euro ticket and a twenty two euro one.</p>
+          
         </div>
       </div>
     </div>
 
-    <div class="passage">
+    <details class="more">
+      <summary>
+        <span class="more-open" data-i18n="s02-more">Why this is the whole plan</span><span class="more-close" data-i18n="more-close">Close</span>
+      </summary>
+      <div class="more-panel"><div class="more-inner">
+        <h3 data-i18n="s02-winter-h3">The cold house</h3>
+        <p data-i18n="s02-winter-p">A counter, a fridge, a press and a grinder. Sandwiches built on bought-in quality rather than technique, pastry from a boulangerie, and coffee that justifies the trip. Three people, no chef, no kitchen running. The quality sits in the sourcing, which is a thing you buy well rather than cook well, and Nice has the suppliers to buy from.</p>
+        <h3 data-i18n="s02-summer-h3">The full house</h3>
+        <p data-i18n="s02-summer-p">A chef and a commis arrive, four or five seasonal floor staff with them. The kitchen opens, twelve to fifteen cooked plates join the menu, and the terrace runs into the evening. The chef is not making sandwiches. The chef is making the difference between a fifteen euro ticket and a twenty two euro one.</p>
+        <p data-i18n="s02-lead">The winter operation and the summer operation are not the same business running at different volumes. They are different operations sharing a kitchen, a supplier list and a name, and separating them properly is what makes the economics work.</p>
+        <p data-i18n="s02-p1">From October to May the menu is cold and assembled. Sandwiches on good bread, pastry from a boulangerie we choose carefully, coffee we take seriously. None of it is cooked, which means none of it needs a chef. Three people run the place. From June to September the kitchen switches on, a chef and a commis arrive, the plates get more ambitious and the terrace runs until late.</p>
+        <p data-i18n="s02-p2">The cold layer does not disappear in summer. It carries breakfast and the quick half of lunch when two hundred and twenty people a day are coming through, which is precisely when you want half your covers leaving the counter rather than the pass.</p>
+        <div class="passage">
       <p data-i18n="s02-passage">Carrying a kitchen and a chef through eight quiet months is what makes most all-day operations marginal. Not carrying them is worth roughly a hundred thousand euro a year, and it is the single largest decision in this plan.</p>
     </div>
+      </div></div>
+    </details>
   </div>
 </section>
 
@@ -1221,18 +1327,7 @@
       <span class="idx">04</span>
       <h2 data-i18n="s03-h2">The economics, measured against real Nice accounts</h2>
     </header>
-    <p class="lead" data-i18n="s03-lead">The model assumes 120 peak days at around 220 transactions on a blended ticket of €22, and 210 quieter days at 110 transactions on €15. It is drawn for a house of roughly 100 to 120 square metres, with about 40 covers inside and 20 on the terrace. Payroll is built from the two operating states rather than averaged across the year.</p>
-
-    <h3 data-i18n="s03-payroll-h3">How the payroll is built</h3>
-    <div class="scroll">
-      <table>
-        <tr><th data-i18n="s03-pth-team">Team</th><th data-i18n="s03-pth-months">Months</th><th class="fig" data-i18n="s03-pth-cost">Loaded cost</th></tr>
-        <tr><td data-i18n="s03-pr1">Core: head of house, two on counter, part-time weekend cover</td><td>12</td><td class="fig">130,000</td></tr>
-        <tr><td data-i18n="s03-pr2">Seasonal: chef, commis, five floor staff</td><td>4</td><td class="fig">92,000</td></tr>
-        <tr class="sum"><td data-i18n="s03-pr-total">Total</td><td></td><td class="fig">222,000</td></tr>
-      </table>
-    </div>
-    <p data-i18n="s03-payroll-p">Against €927,000 of revenue that is 24% payroll. The model below carries it at 28% for safety, which is still a long way below the 35 to 45% a conventional all-day operation runs at, because a conventional operation is paying a kitchen to stand still from October to May.</p>
+    <p class="lead" data-i18n="s03-lead">€927,000 of revenue at 26% EBE, against 15% at a trading Carré d'Or restaurant of comparable size. The entire difference is the kitchen we are not staffing for eight months of the year.</p>
 
     <div class="scroll">
       <table>
@@ -1246,20 +1341,33 @@
         <tr class="sum"><td>EBE</td><td class="fig">26%</td><td class="fig">245,300</td></tr>
       </table>
     </div>
-    <p data-i18n="s03-redevance-note">The redevance replaces rent and sits a little above it, because it buys the use of a trading business rather than an empty set of walls. At four and a half per cent of revenue it is still well inside the discipline below.</p>
-    <p class="fnote" data-i18n="s03-fnote">A trading restaurant of 120 covers in the Carré d'Or currently runs at 15% EBE on around €830,000 of revenue. This model sits well above that, and the entire difference is the kitchen we are not staffing for eight months of the year.</p>
 
-    <h3 data-i18n="s03-h3-rent">The redevance test</h3>
-    <p data-i18n="s03-p-rent">Daniel's rule is that a single good trading day ought to cover a month's occupancy cost. At a redevance of three thousand five hundred a month, one peak day at a twenty two euro ticket needs a hundred and sixty transactions to clear it, which a full terrace does by the middle of the afternoon. Across a whole season the site covers its annual redevance many times over, and the rule holds under the new structure exactly as it did under the old one.</p>
-
-    <h3 data-i18n="s03-winter-h3">The winter stands on its own</h3>
-    <p data-i18n="s03-winter-p">The off-peak season is not a period to be survived on summer money. On three hundred and forty six thousand euro of revenue with three people and no kitchen, October to May carries its own food, payroll, redevance and overheads and still contributes roughly fifty seven thousand euro. That is what makes it possible to stay open all year while much of the city closes or cuts back, and staying open is what holds the search position.</p>
-
-    <div class="numbers">
-      <div class="num-item"><span class="v">29%</span><span class="k" data-i18n="s03-n1">Food and beverage cost, slightly above sector on deliberately better sourcing</span></div>
-      <div class="num-item"><span class="v">28%</span><span class="k" data-i18n="s03-n2">Payroll, built from two team states rather than averaged</span></div>
-      <div class="num-item"><span class="v">26%</span><span class="k" data-i18n="s03-n3">EBE, against 15% at a comparable Carré d'Or restaurant</span></div>
+    <details class="more">
+      <summary>
+        <span class="more-open" data-i18n="s03-more">How the payroll and the redevance work</span><span class="more-close" data-i18n="more-close">Close</span>
+      </summary>
+      <div class="more-panel"><div class="more-inner">
+        <p data-i18n="s03-lead">The model assumes 120 peak days at around 220 transactions on a blended ticket of €22, and 210 quieter days at 110 transactions on €15. It is drawn for a house of roughly 100 to 120 square metres, with about 40 covers inside and 20 on the terrace. Payroll is built from the two operating states rather than averaged across the year.</p>
+        <h3 data-i18n="s03-payroll-h3">How the payroll is built</h3>
+        <div class="scroll">
+      <table>
+        <tr><th data-i18n="s03-pth-team">Team</th><th data-i18n="s03-pth-months">Months</th><th class="fig" data-i18n="s03-pth-cost">Loaded cost</th></tr>
+        <tr><td data-i18n="s03-pr1">Core: head of house, two on counter, part-time weekend cover</td><td>12</td><td class="fig">130,000</td></tr>
+        <tr><td data-i18n="s03-pr2">Seasonal: chef, commis, five floor staff</td><td>4</td><td class="fig">92,000</td></tr>
+        <tr class="sum"><td data-i18n="s03-pr-total">Total</td><td></td><td class="fig">222,000</td></tr>
+      </table>
     </div>
+        <p data-i18n="s03-payroll-p">Against €927,000 of revenue that is 24% payroll. The model below carries it at 28% for safety, which is still a long way below the 35 to 45% a conventional all-day operation runs at, because a conventional operation is paying a kitchen to stand still from October to May.</p>
+        <p data-i18n="s03-redevance-note">The redevance replaces rent and sits a little above it, because it buys the use of a trading business rather than an empty set of walls. At four and a half per cent of revenue it is still well inside the discipline below.</p>
+        <p class="fnote" data-i18n="s03-fnote">A trading restaurant of 120 covers in the Carré d'Or currently runs at 15% EBE on around €830,000 of revenue. This model sits well above that, and the entire difference is the kitchen we are not staffing for eight months of the year.</p>
+        <h3 data-i18n="s03-h3-rent">The redevance test</h3>
+        <p data-i18n="s03-p-rent">Daniel's rule is that a single good trading day ought to cover a month's occupancy cost. At a redevance of three thousand five hundred a month, one peak day at a twenty two euro ticket needs a hundred and sixty transactions to clear it, which a full terrace does by the middle of the afternoon. Across a whole season the site covers its annual redevance many times over, and the rule holds under the new structure exactly as it did under the old one.</p>
+        <h3 data-i18n="s03-winter-h3">The winter stands on its own</h3>
+        <p data-i18n="s03-winter-p">The off-peak season is not a period to be survived on summer money. On three hundred and forty six thousand euro of revenue with three people and no kitchen, October to May carries its own food, payroll, redevance and overheads and still contributes roughly fifty seven thousand euro. That is what makes it possible to stay open all year while much of the city closes or cuts back, and staying open is what holds the search position.</p>
+        <div class="numbers">
+      <div class="num-item"><span class="v">29%</span><span class="k" data-i18n="s03-n1">Food and beverage cost, slightly above sector on deliberately better sourcing</span></div>
+      </div></div>
+    </details>
   </div>
 </section>
 
@@ -1279,21 +1387,31 @@
       <span class="idx">05</span>
       <h2 data-i18n="s07-h2">Lease it first, own it later</h2>
     </header>
-    <p class="lead" data-i18n="s07-lead">France has a structure built for exactly this. Under location-gérance you lease an existing fonds de commerce and operate it, paying the owner a monthly redevance instead of buying the business outright. The owner keeps the asset, we keep the trade, and the entry cost falls from a hundred and eighty thousand euro to about forty. The contract runs a year with tacit renewal, which means the decision to commit properly is made after twelve months of real trading rather than before a single day of it.</p>
+    <p class="lead" data-i18n="s07-lead">€40,000 to start trading, against €180,000 to buy. We lease an existing business, run it under our own name for a year, and buy it in year three out of what it earns.</p>
 
-    <div class="steps">
+    <div class="steps phase-brief">
       <div class="step">
         <h3 data-i18n="s07-ph1-h3">One. Take it on. €40,000.</h3>
-        <p data-i18n="s07-ph1-p">A location-gérance contract on a site already trading, with a purchase option written in from the start. Full operation from day one under our own name, our own standards and our own team. The contract is filed at the greffe and published in a journal of legal announcements, and the redevance carries VAT at twenty per cent. The purchase option matters more than the monthly figure, because a one-year term with tacit renewal is the structure's real weakness and the option is what closes it.</p>
-        <p data-i18n="s07-ph1-p2">The first year is the test, and it is a test conducted on a real business rather than a projection. If the numbers land, we buy. If they do not, the exposure is a deposit and some working capital rather than a hundred and eighty thousand euro of somebody else's fonds.</p>
+        <p data-i18n="s07-ph1-first">A location-gérance contract on a site already trading, with a purchase option written in from the start.</p>
       </div>
       <div class="step">
         <h3 data-i18n="s07-ph2-h3">Two. Buy it. Paid for by the business.</h3>
-        <p data-i18n="s07-ph2-p">Two settled years produce enough to exercise the option and acquire the fonds outright, in cash, with no further call on the partners. We reach the same asset position as an acquisition would have given us, roughly a year later, having risked forty thousand euro rather than a hundred and eighty.</p>
+        <p data-i18n="s07-ph2-first">Two settled years produce enough to exercise the option and acquire the fonds outright, in cash, with no further call on the partners.</p>
       </div>
     </div>
 
-    <div class="scroll">
+    <details class="more">
+      <summary>
+        <span class="more-open" data-i18n="s07-more">The structure and what it costs</span><span class="more-close" data-i18n="more-close">Close</span>
+      </summary>
+      <div class="more-panel"><div class="more-inner">
+        <p data-i18n="s07-lead">France has a structure built for exactly this. Under location-gérance you lease an existing fonds de commerce and operate it, paying the owner a monthly redevance instead of buying the business outright. The owner keeps the asset, we keep the trade, and the entry cost falls from a hundred and eighty thousand euro to about forty. The contract runs a year with tacit renewal, which means the decision to commit properly is made after twelve months of real trading rather than before a single day of it.</p>
+        <h3 data-i18n="s07-ph1-h3">One. Take it on. €40,000.</h3>
+        <p data-i18n="s07-ph1-rest">Full operation from day one under our own name, our own standards and our own team. The contract is filed at the greffe and published in a journal of legal announcements, and the redevance carries VAT at twenty per cent. The purchase option matters more than the monthly figure, because a one-year term with tacit renewal is the structure's real weakness and the option is what closes it.</p>
+        <p data-i18n="s07-ph1-p2">The first year is the test, and it is a test conducted on a real business rather than a projection. If the numbers land, we buy. If they do not, the exposure is a deposit and some working capital rather than a hundred and eighty thousand euro of somebody else's fonds.</p>
+        <h3 data-i18n="s07-ph2-h3">Two. Buy it. Paid for by the business.</h3>
+        <p data-i18n="s07-ph2-rest">We reach the same asset position as an acquisition would have given us, roughly a year later, having risked forty thousand euro rather than a hundred and eighty.</p>
+        <div class="scroll">
       <table>
         <tr><th data-i18n="s07-th-line">Line</th><th class="fig" data-i18n="s07-th-euro">Euro</th><th data-i18n="s07-th-lean">Note</th></tr>
         <tr><td data-i18n="s07-r1">Deposit, three months redevance</td><td class="fig">7,500</td><td data-i18n="s07-r1d">Returnable at the end of the contract</td></tr>
@@ -1304,23 +1422,17 @@
         <tr class="sum"><td data-i18n="s07-total">Total</td><td class="fig">40,000</td><td></td></tr>
       </table>
     </div>
-
-    <div class="numbers">
+        <div class="numbers">
       <div class="num-item"><span class="v">€40,000</span><span class="k" data-i18n="s07-n1">Total exposure to start trading</span></div>
-      <div class="num-item"><span class="v" data-i18n="s07-n2v">2 months</span><span class="k" data-i18n="s07-n2">Of settled trading covers the entire entry cost</span></div>
-      <div class="num-item"><span class="v" data-i18n="s07-n3v">Year 3</span><span class="k" data-i18n="s07-n3">The business buys its own asset</span></div>
-    </div>
-
-    <div class="passage">
+        <div class="passage">
       <p data-i18n="s07-passage">Working capital is lower here than it would be on an acquisition, and that is a consequence of the structure rather than a saving we have chosen. Taking over a trading business means taking over its customers, so there is no ramp from zero and no dead months before the first euro. If the site is not already trading, the number goes back up and the argument for this route weakens considerably.</p>
     </div>
+        <p class="spaced" data-i18n="s07-p1">The return here is not an asset we own on day one. It is the rate at which capital comes back. Forty thousand euro of entry against roughly two hundred and forty five thousand of annual EBE means the business repays its entire starting cost inside two months of settled trading. Everything after that is either distribution or the fund that buys the fonds in year three, at which point the asset arrives on the balance sheet having been paid for by the trade rather than by the partners.</p>
+        <p data-i18n="s07-p2">Beyond the single house, this would be the group's first address in Europe. A Nice business that works becomes a template, a set of supplier relationships, a French operating structure and a credential in a market that takes hospitality seriously. Casa Kinta took Grupo Marea from one restaurant to a portfolio. This would take the portfolio across an ocean.</p>
+        <p data-i18n="s07-p3">The early years pay in the speed at which the money comes back rather than in the size of the asset, and the asset follows on behind. For a first venture in an unfamiliar market, that is the right order.</p>
+      </div></div>
+    </details>
 
-    <p class="spaced" data-i18n="s07-p1">The return here is not an asset we own on day one. It is the rate at which capital comes back. Forty thousand euro of entry against roughly two hundred and forty five thousand of annual EBE means the business repays its entire starting cost inside two months of settled trading. Everything after that is either distribution or the fund that buys the fonds in year three, at which point the asset arrives on the balance sheet having been paid for by the trade rather than by the partners.</p>
-
-    <p data-i18n="s07-p2">Beyond the single house, this would be the group's first address in Europe. A Nice business that works becomes a template, a set of supplier relationships, a French operating structure and a credential in a market that takes hospitality seriously. Casa Kinta took Grupo Marea from one restaurant to a portfolio. This would take the portfolio across an ocean.</p>
-
-    <p data-i18n="s07-p3">The early years pay in the speed at which the money comes back rather than in the size of the asset, and the asset follows on behind. For a first venture in an unfamiliar market, that is the right order.</p>
-  
     <div class="passage risk">
       <h3 data-i18n="s05-risk-h3">What we are accepting</h3>
       <p data-i18n="s05-risk-p">Five things are genuinely uncertain and worth stating plainly. An owner cannot grant location-gérance unless they have run the fonds for at least two years themselves, which disqualifies more sites than expected and has to be checked early on every candidate. The contract typically runs a year with tacit renewal, so without a purchase option written in from the start we improve a business somebody else can take back. The winter ticket is modelled at fifteen euro against roughly nine at comparable cold-menu operations elsewhere, and better sourcing has to carry that gap. Recruiting a chef for four months on the Côte d'Azur means hiring in the same weeks as every restaurant between Menton and Saint-Tropez. And through the first two years we hold no asset at all, which is the price of the lower entry and should be understood as a deliberate trade rather than an oversight.</p>
@@ -1344,24 +1456,27 @@
       <span class="idx">06</span>
       <h2 data-i18n="s05-h2">Being found</h2>
     </header>
-    <p class="lead" data-i18n="s05-lead">Almost everybody who visits Nice, and a good half of the people who live there, will at some point type a version of the same question into a phone. Most operators treat that as something to worry about once the doors are open. It seems more sensible to choose the questions we intend to answer before we choose the menu.</p>
+    <p class="lead" data-i18n="s05-lead">Four questions in Nice have no settled answer: best coffee, best breakfast, best place to work, best iced coffee. All four are answered by the same house, in the same hours, with the same product.</p>
 
-    <p data-i18n="s05-p0">Four questions in Nice have no settled answer: best coffee, best breakfast, best place to work, and best iced coffee.</p>
-
-    <p data-i18n="s05-p1">Breakfast is the most interesting of the four. Every guide to the city names a different set of places, and one or two resort to inventing sub-categories because no single address commands the answer. It is worth separating from brunch, which is thoroughly taken. Brunch is a weekend occasion, whereas breakfast is a weekday habit, and it is habit that keeps the tables full through the winter.</p>
-
-    <p data-i18n="s05-p2">Working from a café barely exists as Nice writing at all, while Paris supports several dedicated guides to the subject, and Nice has thirty thousand students and a growing office population who need somewhere to sit. Iced coffee has no Nice answer whatsoever, in a city that is warm for five months of the year.</p>
-
-    <p class="quote" data-i18n="s05-quote">Nobody out-heritages Nice, but there is a good deal of room to be more modern than it currently is.</p>
-
-    <p data-i18n="s05-p3">All four of those questions are answered by the same house, in the same hours, with the same product. Coffee is the front door, breakfast is the reason to return tomorrow, working is the reason to stay two hours, and iced coffee is the thing that leaves the building in somebody's hand. Every one of them fills the lunch tables.</p>
-
-    <h3 data-i18n="s05-h3">How they get won</h3>
-    <p data-i18n="s05-p4">Local ranking runs on how recently and how consistently people have written about a place, and on details that can be verified rather than asserted. That makes it a matter of running the business well rather than of marketing it hard. Naming the roaster and the origin, and being straightforward about who is making the coffee, gives people something concrete to repeat. A deliberate programme of asking for reviews in the first ninety days, built into how the house is run rather than bolted on afterwards, does most of the rest. Recognition does more than either, because somebody who is greeted by name and handed their usual will write about it, and a well served stranger usually will not.</p>
-
-    <div class="passage">
+    <details class="more">
+      <summary>
+        <span class="more-open" data-i18n="s05-more">How each one gets won</span><span class="more-close" data-i18n="more-close">Close</span>
+      </summary>
+      <div class="more-panel"><div class="more-inner">
+        <p data-i18n="s05-lead">Almost everybody who visits Nice, and a good half of the people who live there, will at some point type a version of the same question into a phone. Most operators treat that as something to worry about once the doors are open. It seems more sensible to choose the questions we intend to answer before we choose the menu.</p>
+        <p data-i18n="s05-p0">Four questions in Nice have no settled answer: best coffee, best breakfast, best place to work, and best iced coffee.</p>
+        <p data-i18n="s05-p1">Breakfast is the most interesting of the four. Every guide to the city names a different set of places, and one or two resort to inventing sub-categories because no single address commands the answer. It is worth separating from brunch, which is thoroughly taken. Brunch is a weekend occasion, whereas breakfast is a weekday habit, and it is habit that keeps the tables full through the winter.</p>
+        <p data-i18n="s05-p2">Working from a café barely exists as Nice writing at all, while Paris supports several dedicated guides to the subject, and Nice has thirty thousand students and a growing office population who need somewhere to sit. Iced coffee has no Nice answer whatsoever, in a city that is warm for five months of the year.</p>
+        <p class="quote" data-i18n="s05-quote">Nobody out-heritages Nice, but there is a good deal of room to be more modern than it currently is.</p>
+        <p data-i18n="s05-p3">All four of those questions are answered by the same house, in the same hours, with the same product. Coffee is the front door, breakfast is the reason to return tomorrow, working is the reason to stay two hours, and iced coffee is the thing that leaves the building in somebody's hand. Every one of them fills the lunch tables.</p>
+        <h3 data-i18n="s05-h3">How they get won</h3>
+        <p data-i18n="s05-p4a">Local ranking runs on how recently and how consistently people have written about a place, and on details that can be verified rather than asserted. That makes it a matter of running the business well rather than of marketing it hard.</p>
+        <p data-i18n="s05-p4b">Naming the roaster and the origin, and being straightforward about who is making the coffee, gives people something concrete to repeat. A deliberate programme of asking for reviews in the first ninety days, built into how the house is run rather than bolted on afterwards, does most of the rest. Recognition does more than either, because somebody who is greeted by name and handed their usual will write about it, and a well served stranger usually will not.</p>
+        <div class="passage">
       <p data-i18n="s05-passage">There is also an advantage in simply staying open. A great many independent places in Nice close or cut back hard through the winter, and their standing in local search weakens a little every year as a result. A business whose weekday trade comes from residents, students and nearby offices can keep going through the quiet months on its own demand, and the gap widens slightly with every season.</p>
     </div>
+      </div></div>
+    </details>
   </div>
 </section>
 
@@ -1380,15 +1495,27 @@
       <span class="idx">07</span>
       <h2 data-i18n="s06-h2">The welcome</h2>
     </header>
-    <p class="lead" data-i18n="s06-lead">What Nice is short of is not a cuisine but a manner of looking after people, and that is what this group actually brings.</p>
+    <p class="lead" data-i18n="s06-lead">What Nice is short of is not a cuisine but a manner of looking after people. Latin American hospitality is warmer by habit than French café convention, it cannot be copied by the place two doors down, and it costs nothing in service time.</p>
 
-    <p data-i18n="s06-p1">The published complaint about coffee in Nice is that it is expensive and unremarkable, which is as much a judgement about how customers are treated as about what is in the cup. Latin American hospitality is warmer by habit than French café convention tends to be, it cannot be copied by the place two doors down, and it costs nothing in service time. Everything else that makes the place distinctive has to sit alongside the transaction rather than inside it, because anything that slows the counter down works against the format.</p>
+    <ul class="intervene-list">
+      <li data-i18n="s06-s1-h3">A second counter for regulars</li>
+      <li data-i18n="s06-s2-h3">Bought better, not cooked harder</li>
+      <li data-i18n="s06-s3-h3">Something to take away</li>
+      <li data-i18n="s06-s4-h3">A short menu, properly done</li>
+      <li data-i18n="s06-s5-h3">The terrace treated as the main event</li>
+    </ul>
 
-    <figure class="band">
+    <details class="more">
+      <summary>
+        <span class="more-open" data-i18n="s06-more">What each one actually means</span><span class="more-close" data-i18n="more-close">Close</span>
+      </summary>
+      <div class="more-panel"><div class="more-inner">
+        <p data-i18n="s06-lead">What Nice is short of is not a cuisine but a manner of looking after people, and that is what this group actually brings.</p>
+        <p data-i18n="s06-p1">The published complaint about coffee in Nice is that it is expensive and unremarkable, which is as much a judgement about how customers are treated as about what is in the cup. Latin American hospitality is warmer by habit than French café convention tends to be, it cannot be copied by the place two doors down, and it costs nothing in service time. Everything else that makes the place distinctive has to sit alongside the transaction rather than inside it, because anything that slows the counter down works against the format.</p>
+        <figure class="band">
       <img class="grade" src="images/terrace.jpg" alt="" width="1200" height="800" loading="lazy">
     </figure>
-
-    <div class="steps">
+        <div class="steps">
       <div class="step">
         <h3 data-i18n="s06-s1-h3">A second counter for regulars</h3>
         <p data-i18n="s06-s1-p">Somewhere for standing orders and familiar faces to be handed a coffee without queueing behind a visitor still reading the menu. It serves the locals properly, and it has the useful side effect of showing every visitor that the place is genuinely somebody's local rather than somewhere arranged for tourists.</p>
@@ -1411,10 +1538,14 @@
       </div>
     </div>
 
-    <div class="passage">
-      <p data-i18n="s06-passage">The thing that compounds over time is recognition. Knowing somebody's order, their name and what happened to them last week costs nothing, cannot be bought by a competitor and is the actual reason a person comes four times a week rather than twice a month. The difficulty is that it usually lives in one barista's memory and leaves when they do, so it needs building into how the house is run: named tabs, a note of the usual order, and a handover between shifts that covers people rather than only stock.</p>
+    
+        <div class="passage">
+      <p data-i18n="s06-passage-a">The thing that compounds over time is recognition. Knowing somebody's order, their name and what happened to them last week costs nothing, cannot be bought by a competitor and is the actual reason a person comes four times a week rather than twice a month.</p>
+      <p data-i18n="s06-passage-b">The difficulty is that it usually lives in one barista's memory and leaves when they do, so it needs building into how the house is run: named tabs, a note of the usual order, and a handover between shifts that covers people rather than only stock.</p>
     </div>
-  
+      </div></div>
+    </details>
+
     <div class="journey-teaser">
       <p data-i18n="s07-teaser">A visitor to Nice stays about three nights, which means they can plausibly come back three or four times in a single trip. We are not trying to win them for life, we are trying to become their place for that trip. There are twelve points between searching on a phone the night before and writing a review on the train home where that is won or lost, and none of them needs capital.</p>
       <p><a class="text-link" href="/journey" data-i18n="s07-teaser-link">Walk through the twelve stages</a></p>
@@ -1489,6 +1620,53 @@
 </footer>
 
 <script src="nice-i18n.js"></script>
+
+<script>
+(function(){
+  var btn = document.querySelector('.read-all');
+  if(!btn) return;
+  var items = function(){ return Array.prototype.slice.call(document.querySelectorAll('details.more')); };
+
+  function openLabel(){ return btn.getAttribute('data-label-open') || 'Open everything'; }
+  function closeLabel(){ return btn.getAttribute('data-label-close') || 'Close everything'; }
+
+  // Cache English labels for i18n interplay
+  btn.setAttribute('data-label-open', 'Open everything');
+  btn.setAttribute('data-label-close', 'Close everything');
+
+  function sync(){
+    var all = items();
+    var allOpen = all.length > 0 && all.every(function(d){ return d.open; });
+    btn.setAttribute('aria-expanded', allOpen ? 'true' : 'false');
+    var es = document.documentElement.lang === 'es';
+    if(allOpen){
+      btn.textContent = es ? 'Cerrar todo' : closeLabel();
+      btn.setAttribute('data-i18n', 'read-all-close');
+    } else {
+      btn.textContent = es ? 'Abrir todo' : openLabel();
+      btn.setAttribute('data-i18n', 'read-all-open');
+    }
+  }
+
+  btn.addEventListener('click', function(){
+    var all = items();
+    var shouldOpen = !all.every(function(d){ return d.open; });
+    all.forEach(function(d){ d.open = shouldOpen; });
+    sync();
+  });
+
+  document.addEventListener('toggle', function(e){
+    if(e.target && e.target.matches && e.target.matches('details.more')) sync();
+  }, true);
+
+  // Keep label in sync when the language toggle fires
+  var langBtn = document.getElementById('lang-toggle');
+  if(langBtn){
+    langBtn.addEventListener('click', function(){ setTimeout(sync, 0); });
+  }
+})();
+</script>
+
 <script>
   (function(){
   var links = Array.prototype.slice.call(document.querySelectorAll('nav.rail a'));
