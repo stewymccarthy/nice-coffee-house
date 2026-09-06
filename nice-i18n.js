@@ -2,7 +2,6 @@
   var ES = {
   title: 'Niza, tres fases',
   'nav-sections': 'Secciones',
-  'mast-date': 'Septiembre de 2026',
   'nav-opening': 'Apertura',
   'nav-city': 'La ciudad',
   'nav-room': 'Dos negocios',
