@@ -40,6 +40,7 @@
   's02-passage': 'Arrastrar una cocina y un chef durante ocho meses tranquilos es lo que deja marginales a la mayoría de los negocios de jornada completa. No arrastrarlos vale alrededor de cien mil euros al año, y es la decisión más grande de este plan.',
   's03-h2': 'La economía, medida contra cuentas reales de Niza',
   's03-lead': '927.000 € de ingresos al 26% de EBE, frente al 15% de un restaurante en activo del Carré d\'Or de tamaño comparable. Toda la diferencia es la cocina que no estamos dotando durante ocho meses del año.',
+  's03-assumptions': 'El modelo supone 120 días punta a unas 220 transacciones con un ticket medio de 22 €, y 210 días más tranquilos a 110 transacciones a 15 €. Está pensado para un local de unos 100 a 120 metros cuadrados, con unas 40 plazas dentro y 20 en la terraza. La nómina se construye a partir de los dos estados de operación, no promediada a lo largo del año.',
   's03-th-line': 'Partida',
   's03-th-share': 'Cuota',
   's03-th-euro': 'Euro',
