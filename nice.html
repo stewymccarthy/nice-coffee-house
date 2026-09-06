@@ -948,39 +948,67 @@
   }
   .read-mode .read-all{
     appearance:none;
-    background:none;
-    border:0;
-    padding:0.55rem 0;
-    margin:0;
-    font:inherit;
-    color:var(--terracotta-deep);
-    text-decoration:underline;
-    text-underline-offset:3px;
-    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin:0.35rem 0 0;
+    padding:0.7rem 1.15rem;
     min-height:44px;
+    border:1px solid var(--terracotta-deep);
+    border-radius:2px;
+    background:var(--foam);
+    color:var(--terracotta-deep);
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.78rem;
+    font-weight:500;
+    letter-spacing:0.04em;
+    line-height:1.3;
+    text-decoration:none;
+    cursor:pointer;
+    transition:background 0.2s,border-color 0.2s,color 0.2s;
   }
-  .read-mode .read-all:hover{color:var(--terracotta);}
+  .read-mode .read-all:hover{
+    background:var(--terracotta-deep);
+    border-color:var(--terracotta-deep);
+    color:var(--foam);
+  }
 
   details.more{
-    margin-top:1.35rem;
+    margin-top:1.5rem;
   }
   details.more > summary{
     list-style:none;
-    cursor:pointer;
-    color:var(--terracotta-deep);
-    text-decoration:underline;
-    text-underline-offset:3px;
-    font-family:inherit;
-    font-size:inherit;
-    line-height:1.65;
-    padding:0.55rem 0;
-    min-height:44px;
     display:inline-flex;
     align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    margin:0;
+    padding:0.7rem 1.15rem;
+    min-height:44px;
+    border:1px solid var(--terracotta-deep);
+    border-radius:2px;
+    background:var(--foam);
+    color:var(--terracotta-deep);
+    font-family:'Outfit',system-ui,sans-serif;
+    font-size:0.78rem;
+    font-weight:500;
+    letter-spacing:0.04em;
+    line-height:1.3;
+    text-decoration:none;
+    transition:background 0.2s,border-color 0.2s,color 0.2s;
   }
   details.more > summary::-webkit-details-marker{display:none;}
   details.more > summary::marker{content:"";}
-  details.more > summary:hover{color:var(--terracotta);}
+  details.more > summary:hover{
+    background:var(--terracotta-deep);
+    border-color:var(--terracotta-deep);
+    color:var(--foam);
+  }
+  details.more[open] > summary{
+    background:var(--terracotta-deep);
+    border-color:var(--terracotta-deep);
+    color:var(--foam);
+  }
   details.more .more-close{display:none;}
   details.more[open] > summary .more-open{display:none;}
   details.more[open] > summary .more-close{display:inline;}
@@ -1171,6 +1199,7 @@
       <span class="idx">01</span>
       <h2 data-i18n="s01-h2">What Nice has already decided</h2>
     </header>
+    
     <p class="lead" data-i18n="s01-lead">Nice guards its favourites carefully, and most of the categories worth having already belong to somebody. Coffee is the exception. The city has respected places but no single address that everyone names, in a category people search for every day.</p>
 
     <div class="tiers">
@@ -1182,15 +1211,34 @@
       <div class="qline"><span class="ask" data-i18n="s05-q4a">Best seafood brasserie</span><span class="who" data-i18n="s05-q4w">Café du Turin</span></div>
     </div>
 
+    <div class="tier">
+      <div class="cap" data-i18n="s05-cap2">Modern, and already taken</div>
+      <div class="qline"><span class="ask" data-i18n="s05-q5a">Best burger in Nice</span><span class="who" data-i18n="s05-q5w">Bubu, Le Bavastro</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q6a">Best brunch in Nice</span><span class="who" data-i18n="s05-q6w">Café Marché, Popote d'Ondine</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q7a">Best natural wine bar</span><span class="who" data-i18n="s05-q7w">La Cave Du Cours, La Part des Anges</span></div>
+      <div class="qline"><span class="ask" data-i18n="s05-q8a">Best pizza in Nice</span><span class="who" data-i18n="s05-q8w">Pizza Pili, Le Safari</span></div>
+    </div>
+
+    <div class="tier is-open">
+      <div class="cap" data-i18n="s05-cap3">Genuinely open</div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q9a">Best coffee in Nice</span><span class="who" data-i18n="s05-q9w">No settled answer</span></div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q10a">Best breakfast in Nice</span><span class="who" data-i18n="s05-q10w">Every guide disagrees</span></div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q11a">Best place to work in Nice</span><span class="who" data-i18n="s05-q11w">Barely written about</span></div>
+      <div class="qline open"><span class="ask" data-i18n="s05-q12a">Best iced coffee in Nice</span><span class="who" data-i18n="s05-q12w">Nobody has claimed it</span></div>
+    </div>
+    </div>
+
     <details class="more">
       <summary>
         <span class="more-open" data-i18n="s01-more">Why coffee and not the rest</span><span class="more-close" data-i18n="more-close">Close</span>
       </summary>
       <div class="more-panel"><div class="more-inner">
+
         <p data-i18n="s01-lead-extra">Knowing which ones are genuinely closed is the first useful thing to establish, because it saves a great deal of wasted effort later.</p>
         <p data-i18n="s01-close">Coffee sits differently. The city has respected places, Cafés Indien, HUG, French Coffee Shop and Canopée among them, but no single address that everyone names. One published review of a shop that Google itself labels as specialty calls it overpriced and unremarkable, and argues that coffee in Nice generally underdelivers for what it costs. That is a complaint sitting in public, in a category people already search for, with nobody answering it.</p>
       </div></div>
     </details>
+
   </div>
 </section>
 
